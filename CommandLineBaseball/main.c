@@ -6,10 +6,18 @@
 //  Copyright © 2017 self.edu. All rights reserved.
 //
 
-#include <stdio.h>
+#include "clb.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
-    return 0;
+    
+    //gets array length and sets global variable
+    arrayLength = getLength("playerlist.txt");
+    
+    //populates the player list
+    Player list[arrayLength];
+    populate("playerlist.txt", list);
+    
+    //debug
+    printArray(list);
+    
 }

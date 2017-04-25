@@ -8,7 +8,7 @@
 
 #include "clb.h"
 
-Player *populate(char *filename){
+void populate(char *filename, Player list[]){
     
     int i = 0;
     
@@ -18,12 +18,8 @@ Player *populate(char *filename){
     //return NULL if the file could not be read
     if(!fp){
         printf("The file could not be read.\n");
-        return NULL;
+        return;
     }
-    
-    //gets the correct amount of players
-    arrayLength = getLength(fp);
-    Player list[arrayLength];
     
     //populate array
     for(i=0; i < arrayLength; i++){
@@ -32,13 +28,19 @@ Player *populate(char *filename){
         list[i].ID = i;
         list[i].next = NULL;
     }
-    
-    return list;
-    
+    fclose(fp);
 }
 
-int getLength(FILE *fp){
+int getLength(char *filename){
     
+    FILE *fp = fopen(filename, "r");
+    
+    //return NULL if the file could not be read
+    if(!fp){
+        printf("The file could not be read.\n");
+        return 0;
+    }
+
     int lines = 0;
     int ch = 0;
     
@@ -48,6 +50,8 @@ int getLength(FILE *fp){
             lines++;
         }
     }
+    
+    fclose(fp);
     return lines;
 }
 

@@ -13,6 +13,7 @@ typedef struct player {
     int power;
     int contact;
     int pitching;
+    int overall;
     int drafted;
     struct player *next;
 } Player;
@@ -33,6 +34,6 @@ Player *team1, *team2;
 int arrayLength;
 
 //noah's prototypes
-Player *populate(char *filename);
-int getLength(FILE *fp);
+void populate(char *filename, Player list[]);
+int getLength(char *filename);
 void printArray(Player a[]);
