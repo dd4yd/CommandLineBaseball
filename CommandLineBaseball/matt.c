@@ -11,6 +11,7 @@
 Player* draft(Player draftable[]){
     
     int choice;
+    int picks = 0;
     
     draftOptions();
     scanf("%d", &choice);
@@ -44,11 +45,14 @@ Player* draft(Player draftable[]){
             break;
             
         case 6:
-            
+            while(picks < 9){
+                draftable = pickPlayerUser(draftable);
+                draftable = pickPlayerComputer(draftable);
+            }
             
     }
     
-    
+    return draftable;
 }
 
 void draftOptions(void){
@@ -91,8 +95,26 @@ Player* pickPlayerUser(Player draftable[]){
 
 Player* pickPlayerComputer(Player draftable[]){
     
+    int i;
+    int max = -1;
+    int index = 0;
     
+    for(i = 0; i < arrayLength; i++){
+        if(draftable[i].overall > max){
+            max = draftable[i].overall;
+            index = i;
+        }
+    }
     
+    Player *picked = malloc(sizeof(Player));
+    
+    *picked = draftable[index];
+    
+    picked->next = team2;
+    team2 = picked;
+    
+    draftable[index].drafted = 1;
+    return draftable;
 }
 
 

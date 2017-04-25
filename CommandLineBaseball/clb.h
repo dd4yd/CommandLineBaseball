@@ -37,3 +37,11 @@ int arrayLength;
 void populate(char *filename, Player list[]);
 int getLength(char *filename);
 void printArray(Player a[]);
+
+//Matt's prototypes
+Player* draft(Player draftable[]);
+void draftOptions(void);
+void printTeam(Player* team);
+Player* pickPlayerUser(Player draftable[]);
+Player* pickPlayerComputer(Player draftable[]);
+
