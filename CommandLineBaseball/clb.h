@@ -13,6 +13,7 @@ typedef struct player {
     int power;
     int contact;
     int pitching;
+    int drafted;
     struct player *next;
 } Player;
 
