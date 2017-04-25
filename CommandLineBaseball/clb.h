@@ -30,6 +30,7 @@ typedef struct game {
 
 //global variables
 Player *team1, *team2;
+int arrayLength;
 
 //noah's prototypes
 Player *populate(char *filename);
