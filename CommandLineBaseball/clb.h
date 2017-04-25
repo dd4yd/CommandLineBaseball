@@ -35,3 +35,4 @@ int arrayLength;
 //noah's prototypes
 Player *populate(char *filename);
 int getLength(FILE *fp);
+void printArray(Player a[]);
