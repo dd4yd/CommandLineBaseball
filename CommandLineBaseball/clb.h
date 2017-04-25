@@ -28,4 +28,8 @@ typedef struct game {
     
 } Game;
 
+//global variables
+Player list[50];
+Player *team1, *team2;
+
 //prototypes
