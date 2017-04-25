@@ -29,7 +29,8 @@ typedef struct game {
 } Game;
 
 //global variables
-Player list[50];
 Player *team1, *team2;
 
-//prototypes
+//noah's prototypes
+Player *populate(char *filename);
+int getLength(FILE *fp);
