@@ -7,6 +7,7 @@
 
 //structs
 typedef struct player {
+    int ID;
     char first[50];
     char last[50];
     int power;
