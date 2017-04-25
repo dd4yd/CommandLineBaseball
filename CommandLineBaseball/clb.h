@@ -7,14 +7,15 @@
 
 //structs
 typedef struct player {
-    char name[100];
+    char first[50];
+    char last[50];
     int power;
     int contact;
     int pitching;
     struct player *next;
 } Player;
 
-typdef struct game {
+typedef struct game {
     Player *team1;
     Player *team2;
     int scoreboard[18];
@@ -25,4 +26,4 @@ typdef struct game {
     
 } Game;
 
-//prototypes go here
+//prototypes
