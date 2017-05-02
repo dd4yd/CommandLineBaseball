@@ -13,45 +13,45 @@ Player* draft(Player draftable[]){
     int choice;
     int picks = 0;
     
-    draftOptions();
-    scanf("%d", &choice);
-    
-    while(choice < 1 || choice > 6){
-        printf("Invalid choice. Options are 1 - 6\n");
-        printf("Select a valid option: ");
+    while(picks < 9){
+        draftOptions();
         scanf("%d", &choice);
-    }
-    
-    switch(choice){
-            
-        case 1:
-            draftable = sortPlayerList(draftable, 1);
-            break;
-            
-        case 2:
-            draftable = sortPlayerList(draftable, 2);
-            break;
-            
-        case 3:
-            draftable = sortPlayerList(draftable, 3);
-            break;
-            
-        case 4:
-            draftable = sortPlayerList(draftable, 4);
-            break;
-            
-        case 5:
-            printArray(draftable);
-            break;
-            
-        case 6:
-            while(picks < 9){
+        
+        while(choice < 1 || choice > 6){
+            printf("Invalid choice. Options are 1 - 6\n");
+            printf("Select a valid option: ");
+            scanf("%d", &choice);
+        }
+        
+        switch(choice){
+                
+            case 1:
+                draftable = sortPlayerList(draftable, 1);
+                break;
+                
+            case 2:
+                draftable = sortPlayerList(draftable, 2);
+                break;
+                
+            case 3:
+                draftable = sortPlayerList(draftable, 3);
+                break;
+                
+            case 4:
+                draftable = sortPlayerList(draftable, 4);
+                break;
+                
+            case 5:
+                printArray(draftable);
+                break;
+                
+            case 6:
                 draftable = pickPlayerUser(draftable);
                 draftable = pickPlayerComputer(draftable);
-            }
-            
+                picks++;
+                break;
+        }
     }
-    
     return draftable;
 }
 
@@ -81,6 +81,11 @@ Player* pickPlayerUser(Player draftable[]){
     int id;
     printf("Enter the ID of the player you would like to draft: ");
     scanf("%d", &id);
+    
+    while(id < 1 || id > 50 || draftable[id].drafted == 1){
+        printf("Invalid pick. Please choose a player 1 - 50 that has not been drafted: ");
+        scanf("%d", &id);
+    }
     
     Player *picked = malloc(sizeof(Player));
     
@@ -115,6 +120,18 @@ Player* pickPlayerComputer(Player draftable[]){
     
     draftable[index].drafted = 1;
     return draftable;
+}
+
+void playGame(Game game){
+    
+    int inning = 0;
+    Player userPitcher = userPickPitcher();
+    Player computerPitcher = computerPickPitcher();
+    
+    while(inning < 17 && game.scoreboard[16] != game.scoreboard[17]){
+        
+    }
+    
 }
 
 
