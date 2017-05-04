@@ -9,6 +9,8 @@
 #include "clb.h"
 Player* team1 = NULL;
 Player* team2 = NULL;
+Player* endUser = NULL;
+Player* endComputer = NULL;
 
 void draft(Player draftable[], Player hash[], int arrayLength){
     
@@ -59,10 +61,14 @@ void draft(Player draftable[], Player hash[], int arrayLength){
                 break;
         }
     }
+    
+    endUser->next = team1;
+    endComputer->next = team2;
 }
 
 void draftOptions(void){
     
+    printf("\n*** Draft Menu ****\n");
     printf("1) Sort by name\n");
     printf("2) Sort by power\n");
     printf("3) Sort by contact\n");
@@ -76,13 +82,14 @@ void draftOptions(void){
 void printTeam(Player* team){
     
     Player* current = team;
-    Player* previous = NULL;
     
-    while(previous->next != team){
-        previous = current;
+    while(1){
         printf("%d. %s %s %d %d %d\n", current->ID, current->first, current->last, current->power, current->contact, current->pitching);
         current = current->next;
+        if(current == team)
+            break;
     }
+    
 }
 
 void pickPlayerUser(Player draftable[], Player hash[]){
@@ -99,6 +106,10 @@ void pickPlayerUser(Player draftable[], Player hash[]){
     Player *picked = malloc(sizeof(Player));
     
     *picked = draftable[id];
+    
+    if(team1 == NULL){
+        endUser = picked;
+    }
     
     picked->next = team1;
     team1 = picked;
@@ -123,6 +134,10 @@ void pickPlayerComputer(Player draftable[], Player hash[], int arrayLength){
     Player *picked = malloc(sizeof(Player));
     
     *picked = draftable[index];
+    
+    if(team2 == NULL){
+        endComputer = picked;
+    }
     
     picked->next = team2;
     team2 = picked;
@@ -181,24 +196,11 @@ void searchPlayer(Player hash[]){
 
 Player* getUserTeam(void){
     
-    Player* current = team1;
-    while(current->next != NULL){
-        current = current->next;
-    }
-    
-    current->next = team1;
     return team1;
 }
 
 Player* getComputerTeam(void){
     
-    Player* current = team2;
-    
-    while(current->next != NULL){
-        current = current->next;
-    }
-    
-    current->next = team2;
     return team2;
 }
 
