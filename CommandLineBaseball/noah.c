@@ -76,6 +76,25 @@ void printArray(Player a[], int arrayLength){
     }
 }
 
+Game startGame(Player *team1, Player *team2){
+    
+    Game game;
+    
+    game.balls = 0;
+    game.outs = 0;
+    game.strikes = 0;
+    
+    game.team1 = team1;
+    game.team2 = team2;
+    
+    return game;
+}
 
+Game playGame(Game game){
+    
+    
+    
+    return game;
+}
 
 

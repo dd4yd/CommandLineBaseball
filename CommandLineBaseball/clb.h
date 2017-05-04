@@ -10,6 +10,7 @@ typedef struct player {
     int ID;
     char first[50];
     char last[50];
+    int inning;
     int power;
     int contact;
     int pitching;
@@ -33,6 +34,8 @@ typedef struct game {
 void populate(char *filename, Player list[], Player arrayHash[], int arrayLength);
 int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
+Game startGame(Player *team1, Player *team2);
+Game playGame(Game game);
 
 //Matt's prototypes
 void draft(Player draftable[], Player hash[], int arrayLength);
