@@ -120,7 +120,7 @@ void pickPlayerUser(Player draftable[], Player hash[], int arrayLength){
     printf("Enter the ID of the player you would like to draft: ");
     scanf("%d", &id);
     
-    while(id < 1 || id > arrayLength || draftable[id].drafted == 1){
+    while(id < 0 || id > arrayLength || draftable[id].drafted == 1){
         printf("Invalid pick. Please choose a player 1 - %d that has not been drafted: ", arrayLength);
         scanf("%d", &id);
     }
