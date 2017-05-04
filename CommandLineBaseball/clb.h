@@ -6,14 +6,16 @@
 #include <time.h>
 
 //enums
-typedef enum hit_type{
+typedef enum at_bat{
+    STRIKEOUT,
+    WALK,
     GROUNDOUT,
     FLYOUT,
     SINGLE,
     DOUBLE,
     TRIPLE,
     HOMERUN
-} HitType;
+} AtBat;
 
 //structs
 typedef struct player {
@@ -48,7 +50,7 @@ int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 Game startGame(Player *team1, Player *team2);
 Game playGame(Game game);
-int user_bat(Game *game);
+AtBat user_bat(Game *game);
 int advanceRunner(Game *game);
 Player* getTeam(Game *game);
 Player *getHighestPitcher(Player *team);
@@ -64,7 +66,7 @@ int getHashNumber(char* name, Player array[]);
 Player* getComputerTeam(void);
 Player* getUserTeam(void);
 void searchPlayer(Player hash[]);
-int determineHit(Player batter, Player pitcher);
+AtBat determineHit(Player batter, Player pitcher);
 
 //David's prototypes
 void sortPlayerList(Player list[], int field, int arrayLength);
