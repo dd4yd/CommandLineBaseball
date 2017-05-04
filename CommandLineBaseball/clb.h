@@ -35,7 +35,7 @@ int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 
 //Matt's prototypes
-void draft(Player draftable[], int arrayLength);
+void draft(Player draftable[], Player hash[], int arrayLength);
 void draftOptions(void);
 void printTeam(Player* team);
 void pickPlayerUser(Player draftable[]);
