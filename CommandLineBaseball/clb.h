@@ -41,17 +41,17 @@ typedef struct game {
     Player *cpu_pitcher;
     Player *user_pitcher;
     int bases[4];
-    
+    struct game *next;
 } Game;
 
 //noah's prototypes
 void populate(char *filename, Player list[], Player arrayHash[], int arrayLength);
 int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
-Game startGame(Player *team1, Player *team2);
-Game playGame(Game game);
+Game* newGame(Player *team1, Player *team2);
+Game* playGame(Game *game);
 AtBat user_bat(Game *game);
-int advanceRunner(Game *game);
+void advanceRunner(Game *game, AtBat hit);
 Player* getTeam(Game *game);
 Player* getHighestPitcher(Player *team);
 
