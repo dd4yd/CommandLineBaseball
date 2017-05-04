@@ -42,6 +42,8 @@ void pickPlayerUser(Player draftable[]);
 void pickPlayerComputer(Player draftable[], int arrayLength);
 int searchPlayerHash(char* name, Player array[]);
 int getHashNumber(char* name, Player array[]);
+Player* getComputerTeam(void);
+Player* getUserTeam(void);
 
 //David's prototypes
 void sortPlayerList(Player list[], int field, int arrayLength);

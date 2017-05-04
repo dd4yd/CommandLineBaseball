@@ -33,9 +33,11 @@ void populate(char *filename, Player list[], Player arrayHash[], int arrayLength
         arrayHash[key].drafted = 0;
         arrayHash[key].ID = i;
         arrayHash[key].next = NULL;
+        arrayHash[key].overall = (list[i].power + list[i].contact + list[i].pitching) / 3;
         list[i].drafted = 0;
         list[i].ID = i;
         list[i].next = NULL;
+        list[i].overall = (list[i].power + list[i].contact + list[i].pitching) / 3;
     }
     fclose(fp);
 }
