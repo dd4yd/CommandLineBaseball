@@ -232,7 +232,7 @@ AtBat determineHit(Player batter, Player pitcher){
     }
     
     double chance = batter.power / 10;
-    int bases = (rand() % 10) * chance + rand() / 3;
+    int bases = (rand() % 10) * chance + rand() % 3;
     
             
     if(bases <= 2)

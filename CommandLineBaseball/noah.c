@@ -95,8 +95,8 @@ Game* newGame(Player *team1, Player *team2){
     game->team2 = team2;
     game->next = NULL;
     
-    game->cpu_pitcher = getHighestPitcher(team1);
-    game->user_pitcher = getHighestPitcher(team2);
+    game->cpu_pitcher = getHighestPitcher(team2);
+    game->user_pitcher = getHighestPitcher(team1);
     
     return game;
 }
@@ -155,6 +155,8 @@ AtBat user_bat(Game *game){
     AtBat hit;
     int guess, pitch;
     
+    printf("Pitcher: %s %s\nBatter: %s %s\n", game->cpu_pitcher->first, game->cpu_pitcher->last, game->team1->first, game->team1->last);
+    
     while(1){
         
         //check for walk and strikeout
@@ -165,7 +167,6 @@ AtBat user_bat(Game *game){
         }
         
         //print at bat
-        printf("Pitcher: %s %s\nBatter: %s %s\n", game->cpu_pitcher->first, game->cpu_pitcher->first, game->team1->first, game->team1->last);
         printf("Outs: %d\nCount: %d-%d\n",game->outs, game->balls, game->strikes);
         printf("Select a pitch to hit (1-4): ");
         
