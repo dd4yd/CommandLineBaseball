@@ -69,7 +69,7 @@ int getLength(char *filename){
 
 void printArray(Player a[], int arrayLength){
     int i = 0;
-    printf("ID First Last Power Contact Pitching\n");
+    printf("ID First Last Power Contact Pitching\n\n");
     for(i=0; i < arrayLength; i++){
         if(a[i].drafted == 0){
             printf("%d %s %s %d %d %d\n", a[i].ID, a[i].first, a[i].last, a[i].power, a[i].contact, a[i].pitching);
@@ -265,6 +265,7 @@ void advanceRunner(Game *game, int hit){
         if(game->bases[i] != 0){
             game->bases[i] += hit;
             game->bases[i + hit] = game->bases[i];
+            game->bases[i] = 0;
         }
         if(game->bases[i] >= 4){
             game->user_score++;
