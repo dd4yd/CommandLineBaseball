@@ -53,7 +53,7 @@ Game playGame(Game game);
 AtBat user_bat(Game *game);
 int advanceRunner(Game *game);
 Player* getTeam(Game *game);
-Player *getHighestPitcher(Player *team);
+Player* getHighestPitcher(Player *team);
 
 //Matt's prototypes
 void draft(Player draftable[], Player hash[], int arrayLength);
