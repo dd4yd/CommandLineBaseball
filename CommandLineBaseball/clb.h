@@ -30,7 +30,7 @@ typedef struct game {
 } Game;
 
 //noah's prototypes
-void populate(char *filename, Player list[], int arrayLength);
+void populate(char *filename, Player list[], Player arrayHash[], int arrayLength);
 int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 

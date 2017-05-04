@@ -8,9 +8,10 @@
 
 #include "clb.h"
 
-void populate(char *filename, Player list[], int arrayLength){
+void populate(char *filename, Player list[], Player arrayHash[], int arrayLength){
     
     int i = 0;
+    int key;
     
     FILE *fp = NULL;
     fp = fopen(filename, "r");
@@ -24,6 +25,14 @@ void populate(char *filename, Player list[], int arrayLength){
     //populate array
     for(i=0; i < arrayLength; i++){
         fscanf(fp, "%s %s %d %d %d", list[i].first, list[i].last, &list[i].power, &list[i].contact, &list[i].pitching);
+        key = getHashNumber(list[i].last, arrayHash);
+        strcpy(arrayHash[key].first, list[i].first);
+        strcpy(arrayHash[key].last, list[i].last);
+        arrayHash[key].power = list[i].power;
+        arrayHash[key].contact = list[i].pitching;
+        arrayHash[key].drafted = 0;
+        arrayHash[key].ID = i;
+        arrayHash[key].next = NULL;
         list[i].drafted = 0;
         list[i].ID = i;
         list[i].next = NULL;
