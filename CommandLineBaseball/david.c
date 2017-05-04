@@ -68,18 +68,17 @@ void downheap(Player list[], int n, int i, int field){
     }
 }
 
-Player* sortPlayerList(Player list[], int n, int field){
+void sortPlayerList(Player list[], int field){
     
     //field: 1->name, 2->contact, 3->power, 4->pitching
     int i;
-    for(i = (n-2)/2; i >= 0; i--){
-        downheap(list, n, i, field);
+    for(i = (arrayLength-2)/2; i >= 0; i--){
+        downheap(list, arrayLength, i, field);
     }
-    for(i = 0; i < n; i++){
-        Player player = list[n-1-i];
-        list[n-i-1] = list[0];
+    for(i = 0; i < arrayLength; i++){
+        Player player = list[arrayLength-1-i];
+        list[arrayLength-i-1] = list[0];
         list[0] = player;
     }
-    return list;
 }
 
