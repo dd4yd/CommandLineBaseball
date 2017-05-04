@@ -26,8 +26,6 @@ int main(int argc, char * argv[]) {
     printArray(list, arrayLength);
     
     printf("\n--------------------------------------------\n");
-    sortPlayerList(list, 4, arrayLength);
-    printArray(list, arrayLength);
     
     draft(list, hash, arrayLength);
     Player* userTeam = getUserTeam();
