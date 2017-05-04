@@ -72,3 +72,4 @@ void downheap(Player list[], int n, int i, int field);
 int maxIndex(Player list[], int n, int i, int j, int k, int field);
 void printScoreboard(Game game);
 void printDiamond(Game game);
+void writeGameToFile(Game game);
