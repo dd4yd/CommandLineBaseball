@@ -271,4 +271,10 @@ void advanceRunner(Game *game, int hit){
     
     if(hit == 4) game->user_score++;
     
+    printf("Bases: ");
+    for(i=0; i < 4; i++){
+        printf("%d ",game->bases[i]);
+    }
+    printf("\n");
+    
 }
