@@ -10,6 +10,12 @@
 
 int main(int argc, char * argv[]) {
     
+    if(argc != 2){
+        printf("Invalid amount of arguments.\n"
+               "Correct usage: ./(program name) (input file)\n");
+        return 0;
+    }
+    
     time_t t;
     srand((unsigned) time(&t));
     
@@ -39,5 +45,7 @@ int main(int argc, char * argv[]) {
     game = newGame(userTeam, computerTeam);
     playGame(game);
     free(game);
-    
+    freeTeam(userTeam);
+    freeTeam(computerTeam);
+    return 0;
 }

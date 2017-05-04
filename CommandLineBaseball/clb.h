@@ -72,6 +72,7 @@ void searchPlayer(Player hash[]);
 AtBat determineHit(Player batter, Player pitcher);
 Game loadGame(char* filename);
 void simInning(Game *game);
+void freeTeam(Player* team);
 
 //David's prototypes
 void sortPlayerList(Player list[], int field, int arrayLength);

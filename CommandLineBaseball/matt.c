@@ -347,6 +347,18 @@ void simInning(Game *game){
 }
 
 
+void freeTeam(Player* team){
+    
+    Player* current = team;
+    Player* previous = NULL;
+    
+    while(current != NULL){
+        previous = current;
+        current = current->next;
+        free(previous);
+    }
+}
+
 
 
 
