@@ -231,7 +231,7 @@ AtBat determineHit(Player batter, Player pitcher){
         else return FLYOUT;
     }
     
-    double chance = batter.power / 10;
+    double chance = (double) batter.power / 10;
     int bases = (rand() % 10) * chance + rand() % 3;
     
             
