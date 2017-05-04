@@ -155,7 +155,7 @@ Game* playGame(Game *game){
         
         //sim cpu inning
         game->inning++;
-        simInning(*game);
+        simInning(game);
         
         //print scoreboard
         printScoreboard(*game);
@@ -255,9 +255,15 @@ void advanceRunner(Game *game, int hit){
     
     int i = 0;
     
+    if(game->bases[0] == 0 && hit == 1){
+        game->bases[0] = 1;
+        return;
+    }
+    
     for(i=3; i >= 0; i--){
         if(game->bases[i] != 0){
             game->bases[i] += hit;
+            game->bases[i + hit] = game->bases[i];
         }
         if(game->bases[i] >= 4){
             game->user_score++;
@@ -269,7 +275,10 @@ void advanceRunner(Game *game, int hit){
         }
     }
     
-    if(hit == 4) game->user_score++;
+    if(hit == 4) {
+        game->scoreboard[game->inning - 1]++;
+        game->user_score++;
+    }
     
     printf("Bases: ");
     for(i=0; i < 4; i++){
