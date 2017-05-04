@@ -264,7 +264,6 @@ void advanceRunner(Game *game, int hit){
         if(game->bases[i] != 0){
             game->bases[i] += hit;
             game->bases[i + hit] = game->bases[i];
-            game->bases[i] = 0;
         }
         if(game->bases[i] >= 4){
             game->user_score++;
