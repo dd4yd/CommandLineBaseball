@@ -212,11 +212,10 @@ void nextInning(Game *game){
     game->balls = 0;
     game->strikes = 0;
     
-    //Debug
-    /*int i = 0;
+    int i = 0;
     for(i=0; i < 4; i++){
         game->bases[i] = 0;
-    }*/
+    }
     
 }
 
@@ -282,10 +281,10 @@ void advanceRunner(Game *game, int hit){
         game->user_score++;
     }
     
-    printf("Bases: ");
+    /*printf("Bases: ");
     for(i=0; i < 4; i++){
         printf("%d ",game->bases[i]);
     }
-    printf("\n");
+    printf("\n");*/
     
 }
