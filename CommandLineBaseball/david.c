@@ -119,7 +119,6 @@ void printScoreboard(Game game){
 
 void printDiamond(Game game){
 
-    int i;
     char first, second, third, home;
 
     if(game.bases[1] == 1) first = 'X';
