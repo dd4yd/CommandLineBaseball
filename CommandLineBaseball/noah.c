@@ -105,21 +105,45 @@ Game* playGame(Game *game){
     
     AtBat at_bat;
     
-    while(game->inning <= 9){
+    while(game->inning <= 18){
         
         while(game->outs != 3){
             
+            //user bats
             at_bat = user_bat(game);
             
             //advance runner if balls = 4
-            
-            //add an out if strikes = 3
+            if(at_bat == WALK || at_bat == SINGLE){
+                printf("Single or Walk\n");
+                game->balls = 0;
+                game->strikes = 0;
+            } else if (at_bat == DOUBLE){
+                printf("Double\n");
+                game->balls = 0;
+                game->strikes = 0;
+            } else if (at_bat == TRIPLE){
+                printf("Triple\n");
+                game->balls = 0;
+                game->strikes = 0;
+            } else if (at_bat == HOMERUN){
+                printf("Homerun\n");
+                game->balls = 0;
+                game->strikes = 0;
+            } else if (at_bat == FLYOUT){
+                printf("Flyout\n");
+                game->outs++;
+            }else if (at_bat == GROUNDOUT){
+                printf("Groundout\n");
+                game->outs++;
+            } else if (at_bat == STRIKEOUT){
+                printf("Strikeout\n");
+                game->outs++;
+            }
             
             //increment the batter
             game->team1 = game->team1->next;
         }
-        
-        game->inning ++;
+        nextInning(game);
     }
     
     return game;
@@ -161,6 +185,14 @@ AtBat user_bat(Game *game){
         }
     }
 }
+
+void nextInning(Game *game){
+    game->inning++;
+    game->outs = 0;
+    game->balls = 0;
+    game->strikes = 0;
+}
+
 
 Player* getHighestPitcher(Player *team){
     
