@@ -90,3 +90,80 @@ void sortPlayerList(Player list[], int field, int arrayLength){
     }
 }
 
+void printScoreboard(Game game){
+
+    int i;
+    int sum1 = 0;
+    int sum2 = 0;
+
+    printf("-----------------------------\n");
+    printf("|                           |\n");
+    printf("|---COMMAND LINE BASEBALL---|\n");
+    printf("|                           |\n");
+    for(i = 0; i < 18; i+2){ //TEAM 1 SCORE
+        sum1 += game.scoreboard[i];
+        printf("| Team 1: %d ", game.scoreboard[i]);
+    }
+    printf("|\n");
+    for(i = 1; i < 18; i+2){
+        sum1 += game.scoreboard[i];
+        printf("| Team 2: %d ", game.scoreboard[i]);
+    }
+    printf("|\n");
+    printf("|                           |\n");
+    printf("| Team 1 Total: %d           |\n", sum1);
+    printf("| Team 2 Total: %d           |\n", sum2);
+    printf("-----------------------------\n");
+
+}
+
+void printDiamond(Game game){
+
+    int i;
+    char first, second, third, home;
+
+    if(game.bases[1] == 1) first = 'X';
+    else first = 'O';
+    if(game.bases[2] == 1) second = 'X';
+    else second = 'O';
+    if(game.bases[3] == 3) third = 'X';
+    else third = 'O';
+
+    home = 'O';
+    printf(" --------------------\n");
+    printf(" |Balls Strikes Outs|\n");
+    printf(" | %d      %d     %d   |\n" game.balls, game.strikes, game.outs);
+    printf(" --------------------\n\n");
+    printf("              %c              \n", second);
+    printf("             / \\             \n");
+    printf("            /   \\            \n");
+    printf("           /     \\           \n");
+    printf("          /       \\          \n");
+    printf("         /         \\         \n");
+    printf("        /           \\        \n");
+    printf("       /             \\       \n");
+    printf("      /               \\      \n");
+    printf("     /                 \\     \n");
+    printf("    /                   \\    \n");
+    printf("   /                     \\   \n");
+    printf("  /                       \\  \n");
+    printf(" /                         \\ \n");
+    printf("%c                           %c\n", third, first);
+    printf(" \\                          /\n");
+    printf("  \\                        / \n");
+    printf("   \\                      /  \n");
+    printf("    \\                    /   \n");
+    printf("     \\                  /    \n");
+    printf("      \\                /     \n");
+    printf("       \\              /      \n");
+    printf("        \\            /       \n");
+    printf("         \\          /        \n");
+    printf("          \\        /         \n");
+    printf("           \\      /          \n");
+    printf("            \\    /           \n");
+    printf("             \\  /            \n");
+    printf("              %c              \n", home);
+
+}
+
+
