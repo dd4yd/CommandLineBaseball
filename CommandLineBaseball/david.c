@@ -123,7 +123,7 @@ void printDiamond(Game game){
 
     if(game.bases[1] == 1) first = 'X';
     else first = 'O';
-    if(game.bases[2] == 1) second = 'X';
+    if(game.bases[2] == 2) second = 'X';
     else second = 'O';
     if(game.bases[3] == 3) third = 'X';
     else third = 'O';
