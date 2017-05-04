@@ -70,6 +70,10 @@ void draft(Player draftable[], Player hash[], int arrayLength){
                 pickPlayerComputer(draftable, hash, arrayLength);
                 picks++;
                 break;
+                
+            default:
+                printf("Error\n");
+                break;
         }
     }
     
@@ -323,14 +327,17 @@ void simInning(Game game){
     }
     if(num >= 2){
         game.scoreboard[game.inning - 1] = 1;
+        game.cpu_score += 1;
         return;
     }
     if(num >= 1){
         game.scoreboard[game.inning - 1] = 2;
+        game.cpu_score += 2;
         return;
     }
     if(num >= 0){
         game.scoreboard[game.inning - 1] = 3;
+        game.cpu_score += 3;
         return;
     }
 }
