@@ -313,6 +313,28 @@ Game loadGame(char* filename){
     return game;
 }
 
+void simInning(Game game){
+    
+    int num = rand() % game.user_pitcher->pitching;
+    
+    if(num >= 3){
+        game.scoreboard[game.inning - 1] = 0;
+        return;
+    }
+    if(num >= 2){
+        game.scoreboard[game.inning - 1] = 1;
+        return;
+    }
+    if(num >= 1){
+        game.scoreboard[game.inning - 1] = 2;
+        return;
+    }
+    if(num >= 0){
+        game.scoreboard[game.inning - 1] = 3;
+        return;
+    }
+}
+
 
 
 
