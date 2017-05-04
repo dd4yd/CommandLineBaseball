@@ -204,7 +204,7 @@ Player* getComputerTeam(void){
     return team2;
 }
 
-HitType determineHit(Player batter, Player pitcher){
+AtBat determineHit(Player batter, Player pitcher){
     
     if(rand() % (batter.contact + 2) < rand() % (pitcher.pitching + 2)){
         if(batter.contact > batter.power) return GROUNDOUT;
@@ -212,21 +212,19 @@ HitType determineHit(Player batter, Player pitcher){
     }
     
     double chance = batter.power / 10;
-    int bases = (rand() % 10) * chance;
+    int bases = (rand() % 10) * chance + rand() / 3;
     
-    switch(bases){
             
-        case 0: case 1: case 2:
-            return SINGLE;
-        case 3: case 4:
-            return DOUBLE;
-        case 5: case 6: case 7:
-            return TRIPLE;
-        case 8: case 9: case 10:
-            return HOMERUN;
-        default:
-            return FLYOUT;
-    }
+    if(bases <= 2)
+        return SINGLE;
+    if(bases <= 4)
+        return DOUBLE;
+    if(bases <= 7)
+        return TRIPLE;
+    if(bases <= 11)
+        return HOMERUN;
+    
+    return FLYOUT;
 }
 
 
