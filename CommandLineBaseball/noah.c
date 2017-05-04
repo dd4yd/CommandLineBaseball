@@ -132,7 +132,7 @@ void user_bat(Game *game){
             
         } else if(guess == pitch){
             
-            //hit = determineHit(player, pitcher);
+            hit = determineHit(*player, *pitcher);
             
         } else {
             
