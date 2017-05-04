@@ -10,7 +10,7 @@
 Player* team1 = NULL;
 Player* team2 = NULL;
 
-void draft(Player draftable[], int arrayLength){
+void draft(Player draftable[], Player hash[], int arrayLength){
     
     int choice;
     int picks = 0;
@@ -46,9 +46,12 @@ void draft(Player draftable[], int arrayLength){
             case 5:
                 printArray(draftable, arrayLength);
                 break;
-                
+            
             case 6:
+                searchPlayer(hash);
                 
+            case 7:
+                sortPlayerList(draftable, 5, arrayLength);
                 pickPlayerUser(draftable);
                 pickPlayerComputer(draftable, arrayLength);
                 picks++;
@@ -65,7 +68,7 @@ void draftOptions(void){
     printf("4) Sort by pitching\n");
     printf("5) Show players\n");
     printf("6) Search for player\n");
-    printf("6) Draft a player\n");
+    printf("7) Draft a player\n");
     printf("Select an option: ");
 }
 
@@ -79,7 +82,7 @@ void printTeam(Player* team){
     }
 }
 
-void pickPlayerUser(Player draftable[]){
+void pickPlayerUser(Player draftable[], Player hash[]){
     
     int id;
     printf("Enter the ID of the player you would like to draft: ");
@@ -98,9 +101,10 @@ void pickPlayerUser(Player draftable[]){
     team1 = picked;
     
     draftable[id].drafted = 1;
+    hash[getHashNumber(draftable[id].last, hash)].drafted = 1;
 }
 
-void pickPlayerComputer(Player draftable[], int arrayLength){
+void pickPlayerComputer(Player draftable[], Player hash[], int arrayLength){
     
     int i;
     int max = -1;
@@ -121,6 +125,7 @@ void pickPlayerComputer(Player draftable[], int arrayLength){
     team2 = picked;
     
     draftable[index].drafted = 1;
+    hash[getHashNumber(draftable[index].last, hash)].drafted = 1;
 }
 
 int getHashNumber(char* name, Player array[]){
@@ -153,6 +158,21 @@ int searchPlayerHash(char* name, Player array[]){
     }
     else{
         return key;
+    }
+}
+
+void searchPlayer(Player hash[]){
+    
+    char name[50];
+    
+    printf("Enter the name of the player you'd like to search: ");
+    scanf("%s", name);
+    int key = searchPlayerHash(name, hash);
+    if(key == -1 || hash[key].drafted == 1){
+        printf("%s is not a draftable player\n", name);
+    }
+    else{
+        printf("%d. %s %s %d %d %d\n", hash[key].ID, hash[key].first, hash[key].last, hash[key].contact, hash[key].power,hash[key].pitching);
     }
 }
 

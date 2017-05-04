@@ -41,12 +41,13 @@ Game playGame(Game game);
 void draft(Player draftable[], Player hash[], int arrayLength);
 void draftOptions(void);
 void printTeam(Player* team);
-void pickPlayerUser(Player draftable[]);
-void pickPlayerComputer(Player draftable[], int arrayLength);
+void pickPlayerUser(Player draftable[], Player hash[]);
+void pickPlayerComputer(Player draftable[], Player hash[], int arrayLength);
 int searchPlayerHash(char* name, Player array[]);
 int getHashNumber(char* name, Player array[]);
 Player* getComputerTeam(void);
 Player* getUserTeam(void);
+void searchPlayer(Player hash[]);
 
 //David's prototypes
 void sortPlayerList(Player list[], int field, int arrayLength);
