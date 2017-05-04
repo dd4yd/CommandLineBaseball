@@ -93,26 +93,22 @@ void sortPlayerList(Player list[], int field, int arrayLength){
 void printScoreboard(Game game){
 
     int i;
-    int sum1 = 0;
-    int sum2 = 0;
-
+    
     printf("-----------------------------\n");
     printf("|                           |\n");
     printf("|---COMMAND LINE BASEBALL---|\n");
     printf("|                           |\n");
     printf("| Team 1:                   |\n| ");
     for(i = 0; i < 18; i+=2){ //TEAM 1 SCORE
-        sum1 += game.scoreboard[i];
         printf("%d ", game.scoreboard[i]);
     }
     printf("\n| Team 2:                   |\n| ");
     for(i = 1; i < 18; i+=2){
-        sum1 += game.scoreboard[i];
         printf("%d ", game.scoreboard[i]);
     }
     printf("\n|                           |\n");
-    printf("| Team 1 Total: %d           |\n", sum1);
-    printf("| Team 2 Total: %d           |\n", sum2);
+    printf("| Team 1 Total: %d           |\n", game.user_score);
+    printf("| Team 2 Total: %d           |\n", game.cpu_score);
     printf("-----------------------------\n");
 
 }
