@@ -85,6 +85,7 @@ Game* newGame(Player *team1, Player *team2){
     }
     
     Game *game = malloc(sizeof(Game));
+    int i = 0;
     
     game->balls = 0;
     game->outs = 0;
@@ -96,6 +97,9 @@ Game* newGame(Player *team1, Player *team2){
     game->team1 = team1;
     game->team2 = team2;
     game->next = NULL;
+    
+    for(i=0; i < 18; i++){ game->scoreboard[i] = 0; }
+    for(i=0; i < 4; i++){ game->bases[i] = 0; }
     
     game->cpu_pitcher = getHighestPitcher(team2);
     game->user_pitcher = getHighestPitcher(team1);
@@ -199,7 +203,6 @@ AtBat user_bat(Game *game){
 void nextInning(Game *game){
     game->inning++;
     printf("3 outs! We are moving to inning %d.\n", game->inning);
-    printf("------------------------------------------\n");
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;
