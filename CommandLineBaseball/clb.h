@@ -46,6 +46,6 @@ Player* pickPlayerUser(Player draftable[]);
 Player* pickPlayerComputer(Player draftable[]);
 
 //David's prototypes
-Player* sortPlayerList(Player list[], int n, int field);
+Player* sortPlayerList(Player list[], int field);
 void downheap(Player list[], int n, int i, int field);
 int maxIndex(Player list[], int n, int i, int j, int k, int field);
