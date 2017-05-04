@@ -132,7 +132,7 @@ void printDiamond(Game game){
     home = 'O';
     printf(" --------------------\n");
     printf(" |Balls Strikes Outs|\n");
-    printf(" | %d      %d     %d   |\n" game.balls, game.strikes, game.outs);
+    printf(" | %d      %d     %d   |\n", game.balls, game.strikes, game.outs);
     printf(" --------------------\n\n");
     printf("              %c              \n", second);
     printf("             / \\             \n");

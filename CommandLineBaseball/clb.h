@@ -26,8 +26,8 @@ typedef struct game {
     int outs;
     int strikes;
     int balls;
-    int cpu_pitcher;
-    int user_pitcher;
+    Player *cpu_pitcher;
+    Player *user_pitcher;
     int bases[4];
     
 } Game;
@@ -38,9 +38,10 @@ int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 Game startGame(Player *team1, Player *team2);
 Game playGame(Game game);
-void bat(Game *game);
+void user_bat(Game *game);
 void advanceRunner(Game *game);
 Player* getTeam(Game *game);
+Player *getHighestPitcher(Player *team);
 
 //Matt's prototypes
 void draft(Player draftable[], Player hash[], int arrayLength);
