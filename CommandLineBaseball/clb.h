@@ -5,6 +5,16 @@
 #include <math.h>
 #include <time.h>
 
+//enums
+typedef enum hit_type{
+    GROUNDOUT,
+    FLYOUT,
+    SINGLE,
+    DOUBLE,
+    TRIPLE,
+    HOMERUN
+} HitType;
+
 //structs
 typedef struct player {
     int ID;
