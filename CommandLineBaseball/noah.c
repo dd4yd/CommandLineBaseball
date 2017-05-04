@@ -119,23 +119,28 @@ Game* playGame(Game *game){
             at_bat = user_bat(game);
             
             if(at_bat == WALK || at_bat == SINGLE){
-                printf("Single or Walk\n");
+                printf("%s %s hit a single!\n", game->team1->first, game->team1->last);
+                advanceRunner(game, 1);
             } else if (at_bat == DOUBLE){
-                printf("Double\n");
+                printf("%s %s\n hit a double!\n", game->team1->first, game->team1->last);
+                advanceRunner(game, 2);
             } else if (at_bat == TRIPLE){
-                printf("Triple\n");
+                printf("%s %s\n hit a triple!\n", game->team1->first, game->team1->last);
+                advanceRunner(game, 3);
             } else if (at_bat == HOMERUN){
-                printf("Homerun\n");
+                printf("%s %s\n hit a homerun!\n", game->team1->first, game->team1->last);
+                advanceRunner(game, 4);
             } else if (at_bat == FLYOUT){
-                printf("Flyout\n");
+                printf("%s %s\n flew out.\n", game->team1->first, game->team1->last);
                 game->outs = game->outs + 1;
             } else if (at_bat == GROUNDOUT){
-                printf("Groundout\n");
+                printf("%s %s\n grounded out.\n", game->team1->first, game->team1->last);
                 game->outs++;
             } else if (at_bat == STRIKEOUT){
-                printf("Strikeout\n");
+                printf("%s %s\n struck out.\n", game->team1->first, game->team1->last);
                 game->outs++;
             }
+            printf("------------------------------------------\n");
             
             //reset count
             game->balls = 0;
@@ -201,11 +206,18 @@ AtBat user_bat(Game *game){
 }
 
 void nextInning(Game *game){
+    
     game->inning++;
     printf("3 outs! We are moving to inning %d.\n", game->inning);
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;
+    
+    int i = 0;
+    for(i=0; i < 4; i++){
+        game->bases[i] = 0;
+    }
+    
 }
 
 
@@ -241,5 +253,22 @@ Player* getTeam(Game *game){
 }
 
 void advanceRunner(Game *game, int hit){
+    
+    int i = 0;
+    
+    for(i=3; i >= 0; i--){
+        if(game->bases[i] != 0){
+            game->bases[i] += hit;
+        }
+        if(game->bases[i] >= 4){
+            game->user_score++;
+            game->bases[i] = 0;
+        } else {
+            game->bases[i + hit] = game->bases[i];
+            game->bases[hit] = hit;
+        }
+    }
+    
+    if(hit == 4) game->user_score++;
     
 }
