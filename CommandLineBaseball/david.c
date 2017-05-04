@@ -49,10 +49,10 @@ int maxIndex(Player list[], int n, int i, int j, int k, int field){
             }
             break;
         case 5: //ID
-            if(j < n && list[j].ID < list[max].ID){
+            if(j < n && list[j].ID > list[max].ID){
                 max = j;
             }
-            if(k < n && list[k].ID < list[max].ID){
+            if(k < n && list[k].ID > list[max].ID){
                 max = k;
             }
             break;
@@ -128,12 +128,12 @@ void printDiamond(Game game){
     else second = 'O';
     if(game.bases[3] == 3) third = 'X';
     else third = 'O';
-
     home = 'O';
-    printf(" --------------------\n");
-    printf(" |Balls Strikes Outs|\n");
-    printf(" | %d      %d     %d   |\n", game.balls, game.strikes, game.outs);
-    printf(" --------------------\n\n");
+
+    printf("   --------------------\n");
+    printf("   |Balls Strikes Outs|\n");
+    printf("   | %d      %d     %d   |\n", game.balls, game.strikes, game.outs);
+    printf("   --------------------\n\n");
     printf("              %c              \n", second);
     printf("             / \\             \n");
     printf("            /   \\            \n");
@@ -165,5 +165,58 @@ void printDiamond(Game game){
     printf("              %c              \n", home);
 
 }
+
+void writeGameToFile(Game game){
+
+    char *filename = "saveFile.txt";
+    FILE *fPtr = fopen(filename, "w");
+    if(fPtr == NULL){
+        printf("Couldn't open saveFile.txt\n");
+    }
+
+    int i;
+    int teamSize = 9;
+    int scoreboardSize = 18;
+    int bases = 4;
+
+    fprintf(fPtr, "Team 1:\n");
+    for(i = 0; i < teamSize; i++){
+        fprintf(fPtr, "%d %s %s %d %d %d\n", game.team1[i].ID, game.team1[i].first, game.team1[i].last, game.team1[i].power, game.team1[i].contact, game.team1[i].pitching);
+    }
+    fprintf(fPtr, "\nTeam 2:\n");
+    for(i = 0; i < teamSize; i++){
+        printf(fPtr, "%d %s %s %d %d %d\n", game.team2[i].ID, game.team2[i].first, game.team2[i].last, game.team2[i].power, game.team2[i].contact, game.team2[i].pitching);
+    }
+
+    fprintf(fPtr, "\nScoreboard:\n");
+    fprintf(fPtr, "Team 1: ");
+    for(i = 0; i < scoreboardSize; i+2){
+        fprintf(fPtr, "%d ", game.scoreboard[i]);
+    }
+    fprintf(fPtr, "\nTeam 2: ");
+    for(i = 1; i < scoreboardSize; i+2){
+        fprintf(fPtr, "%d ", game.scoreboard[i]);
+    }
+
+    fprintf(fPtr, "\nInning: %d\n", game.inning);
+    fprintf(fPtr, "Balls: %d\n", game.balls);
+    fprintf(fPtr, "Strikes: %d\n", game.strikes);
+    fprintf(fPtr, "Ours: %d\n", game.outs);
+
+    fprintf(fPtr, "\n Bases (home, 1st, 2nd, 3rd): ");
+    for(i = 0; i < bases; i++){
+        fprintf(fPtr, "%d ", game.bases[i]);
+    }
+
+    fprintf(fPtr, "\nCPU Pitcher:\n");
+    fprintf(fPtr, "%d %s %s %d %d %d\n" game.cpu_pitcher.ID, game.cpu_pitcher.first, game.cpu_pitcher.last, game.cpu_pitcher.power, game.cpu_pitcher.contact, game.cpu_pitcher.pitching);
+    fprintf(fPtr, "\nUser Pitcher:\n");
+    fprintf(fPtr, "%d %s %s %d %d %d\n" game.cpu_pitcher.ID, game.cpu_pitcher.first, game.cpu_pitcher.last, game.cpu_pitcher.power, game.cpu_pitcher.contact, game.cpu_pitcher.pitching);
+
+    fclose(fPtr);
+
+}
+
+
 
 

@@ -247,6 +247,72 @@ AtBat determineHit(Player batter, Player pitcher){
     return FLYOUT;
 }
 
+Game loadGame(char* filename){
+    
+    FILE* fPtr = fopen(filename, "w");
+    
+    Game game;
+    
+    if(fPtr == NULL){
+        printf("File could not be opened\n");
+        return game;
+    }
+    
+    char temp[50];
+    int i;
+    int teamSize = 9;
+    int scoreboardSize = 18;
+    int bases = 4;
+    
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    for(i = 0; i < teamSize; i++){
+        fscanf(fPtr, "%d %s %s %d %d %d", &game.team1[i].ID, game.team1[i].first, game.team1[i].last, &game.team1[i].power, &game.team1[i].contact, &game.team1[i].pitching);
+    }
+    
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    for(i = 0; i < teamSize; i++){
+        fscanf(fPtr, "%d %s %s %d %d %d", &game.team2[i].ID, game.team2[i].first, game.team2[i].last, &game.team2[i].power, &game.team2[i].contact, &game.team2[i].pitching);
+    }
+    
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    for(i = 0; i < scoreboardSize; i+=2){
+        game.scoreboard[i] = fgetc(fPtr);
+    }
+    
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    for(i = 1; i < scoreboardSize; i+=2){
+        game.scoreboard[i] = fgetc(fPtr);
+    }
+    
+    fscanf(fPtr, "%s %d", temp, &game.inning);
+    fscanf(fPtr, "%s %d", temp, &game.balls);
+    fscanf(fPtr, "%s %d", temp, &game.strikes);
+    fscanf(fPtr, "%s %d", temp, &game.outs);
+    
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    for(i = 0; i < bases; i++){
+        game.bases[i] = fgetc(fPtr);
+    }
+    
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    fscanf(fPtr, "%d %s %s %d %d %d", &game.cpu_pitcher->ID, game.cpu_pitcher->first, game.cpu_pitcher->last, &game.cpu_pitcher->power, &game.cpu_pitcher->contact, &game.cpu_pitcher->pitching);
+    while (fgets(temp, sizeof(temp), fPtr)){
+    }
+    fscanf(fPtr, "%d %s %s %d %d %d", &game.user_pitcher->ID, game.user_pitcher->first, game.user_pitcher->last, &game.user_pitcher->power, &game.user_pitcher->contact, &game.user_pitcher->pitching);
+    
+    fclose(fPtr);
+
+    return game;
+}
+
 
 
 
