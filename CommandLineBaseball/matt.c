@@ -137,7 +137,7 @@ int getHashNumber(char* name, Player array[]){
     
     key = 100 * ((double) (key * a) - (int) (key * a));
     
-    for(j = 0; array[key].last != NULL && strcmp(array[key].last, name) != 0; j++){
+    for(j = 0; array[key].last[0] != '\0' && strcmp(array[key].last, name) != 0; j++){
         key = (key + 1) % 100;
     }
     
@@ -148,7 +148,7 @@ int searchPlayerHash(char* name, Player array[]){
     
     int key = getHashNumber(name, array);
     
-    if(array[key].last == NULL){
+    if(array[key].last[0] == '\0'){
         return -1;
     }
     else{
