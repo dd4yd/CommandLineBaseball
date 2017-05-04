@@ -19,7 +19,7 @@ void draft(Player draftable[], Player hash[], int arrayLength){
         draftOptions();
         scanf("%d", &choice);
         
-        while(choice < 1 || choice > 6){
+        while(choice < 1 || choice > 7){
             printf("Invalid choice. Options are 1 - 6\n");
             printf("Select a valid option: ");
             scanf("%d", &choice);
