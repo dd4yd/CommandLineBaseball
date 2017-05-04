@@ -62,6 +62,7 @@ void draftOptions(void){
     printf("3) Sort by power\n");
     printf("4) Sort by pitching\n");
     printf("5) Show players\n");
+    printf("6) Search for player\n");
     printf("6) Draft a player\n");
     printf("Select an option: ");
 }
@@ -120,6 +121,39 @@ Player* pickPlayerComputer(Player draftable[]){
     
     draftable[index].drafted = 1;
     return draftable;
+}
+
+int getHashNumber(char* name, Player array[]){
+    
+    int i;
+    int key = 0;
+    double a = 0.618942;
+    int j;
+    
+    for(i = 0; name[i] != '\0'; i++){
+        key += name[i] + i;
+    }
+    
+    
+    key = 100 * ((double) (key * a) - (int) (key * a));
+    
+    for(j = 0; array[key].last != NULL && strcmp(array[key].last, name) != 0; j++){
+        key = (key + 1) % 100;
+    }
+    
+    return key;
+}
+
+int searchPlayerHash(char* name, Player array[]){
+    
+    int key = getHashNumber(name, array);
+    
+    if(array[key].last == NULL){
+        return -1;
+    }
+    else{
+        return key;
+    }
 }
 
 
