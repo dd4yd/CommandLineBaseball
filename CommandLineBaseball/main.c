@@ -30,7 +30,9 @@ int main(int argc, char * argv[]) {
     draft(list, hash, arrayLength);
     Player* userTeam = getUserTeam();
     Player* computerTeam = getComputerTeam();
+    printf("\n--- USER TEAM ---\n");
     printTeam(userTeam);
+    printf("\n--- COMPUTER TEAM ---\n");
     printTeam(computerTeam);
     
     Game *game = NULL;
