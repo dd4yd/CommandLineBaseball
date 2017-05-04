@@ -16,6 +16,10 @@ int main(int argc, char * argv[]) {
         return 0;
     }
     
+    
+    printf("***** COMMAND LINE BASEBALL *****\n");
+    printf("---------------------------------\n\n");
+    
     time_t t;
     srand((unsigned) time(&t));
     
