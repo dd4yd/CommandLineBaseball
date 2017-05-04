@@ -154,6 +154,7 @@ Game* playGame(Game *game){
         }
         
         //sim cpu inning
+        game->inning++;
         simInning(*game);
         
         //print scoreboard
@@ -184,7 +185,6 @@ AtBat user_bat(Game *game){
         }
         
         //print at bat
-        printf("Outs: %d\nCount: %d-%d\n",game->outs, game->balls, game->strikes);
         printf("------------------------------------------\n");
         printf("Select a pitch to hit (1-4): ");
         
@@ -194,21 +194,20 @@ AtBat user_bat(Game *game){
         
         if(pitch == 5){
             game->balls++;
-            printf("Ball %d!\n", game->balls);
         } else if(guess == pitch){
             hit = determineHit(*(game->team1), *(game->cpu_pitcher));
             return hit;
         } else {
             game->strikes++;
-            printf("Strike %d!\n", game->strikes);
         }
+        printCount(*game);
     }
 }
 
 void nextInning(Game *game){
     
     game->inning++;
-    printf("3 outs! We are moving to inning %d.\n", game->inning);
+    printf("3 outs! We are moving to inning %d.\n", game->inning/2);
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;
@@ -262,6 +261,7 @@ void advanceRunner(Game *game, int hit){
         }
         if(game->bases[i] >= 4){
             game->user_score++;
+            game->scoreboard[game->inning - 1]++;
             game->bases[i] = 0;
         } else {
             game->bases[i + hit] = game->bases[i];
