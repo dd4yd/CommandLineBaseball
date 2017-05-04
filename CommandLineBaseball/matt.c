@@ -94,6 +94,11 @@ void draftOptions(void){
 
 void printTeam(Player* team){
     
+    if(team == NULL){
+        printf("No one is on the team\n");
+        return;
+    }
+    
     Player* current = team;
     
     while(1){
@@ -105,14 +110,14 @@ void printTeam(Player* team){
     
 }
 
-void pickPlayerUser(Player draftable[], Player hash[]){
+void pickPlayerUser(Player draftable[], Player hash[], int arrayLength){
     
     int id;
     printf("Enter the ID of the player you would like to draft: ");
     scanf("%d", &id);
     
-    while(id < 1 || id > 50 || draftable[id].drafted == 1){
-        printf("Invalid pick. Please choose a player 1 - 50 that has not been drafted: ");
+    while(id < 1 || id > arrayLength || draftable[id].drafted == 1){
+        printf("Invalid pick. Please choose a player 1 - %d that has not been drafted: ", arrayLength);
         scanf("%d", &id);
     }
     

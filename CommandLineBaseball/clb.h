@@ -59,7 +59,7 @@ Player *getHighestPitcher(Player *team);
 void draft(Player draftable[], Player hash[], int arrayLength);
 void draftOptions(void);
 void printTeam(Player* team);
-void pickPlayerUser(Player draftable[], Player hash[]);
+void pickPlayerUser(Player draftable[], Player hash[], int arrayLength);
 void pickPlayerComputer(Player draftable[], Player hash[], int arrayLength);
 int searchPlayerHash(char* name, Player array[]);
 int getHashNumber(char* name, Player array[]);
