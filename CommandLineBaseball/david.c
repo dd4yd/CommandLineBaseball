@@ -100,12 +100,12 @@ void printScoreboard(Game game){
     printf("|                           |\n");
     printf("|---COMMAND LINE BASEBALL---|\n");
     printf("|                           |\n");
-    for(i = 0; i < 18; i+2){ //TEAM 1 SCORE
+    for(i = 0; i < 18; i+=2){ //TEAM 1 SCORE
         sum1 += game.scoreboard[i];
         printf("| Team 1: %d ", game.scoreboard[i]);
     }
     printf("|\n");
-    for(i = 1; i < 18; i+2){
+    for(i = 1; i < 18; i+=2){
         sum1 += game.scoreboard[i];
         printf("| Team 2: %d ", game.scoreboard[i]);
     }
@@ -190,11 +190,11 @@ void writeGameToFile(Game game){
 
     fprintf(fPtr, "\nScoreboard:\n");
     fprintf(fPtr, "Team 1: ");
-    for(i = 0; i < scoreboardSize; i+2){
+    for(i = 0; i < scoreboardSize; i+=2){
         fprintf(fPtr, "%d ", game.scoreboard[i]);
     }
     fprintf(fPtr, "\nTeam 2: ");
-    for(i = 1; i < scoreboardSize; i+2){
+    for(i = 1; i < scoreboardSize; i+=2){
         fprintf(fPtr, "%d ", game.scoreboard[i]);
     }
 
@@ -209,9 +209,9 @@ void writeGameToFile(Game game){
     }
 
     fprintf(fPtr, "\nCPU Pitcher:\n");
-    fprintf(fPtr, "%d %s %s %d %d %d\n" game.cpu_pitcher.ID, game.cpu_pitcher.first, game.cpu_pitcher.last, game.cpu_pitcher.power, game.cpu_pitcher.contact, game.cpu_pitcher.pitching);
+    fprintf(fPtr, "%d %s %s %d %d %d\n" game.cpu_pitcher->ID, game.cpu_pitcher->first, game.cpu_pitcher->last, game.cpu_pitcher->power, game.cpu_pitcher->contact, game.cpu_pitcher->pitching);
     fprintf(fPtr, "\nUser Pitcher:\n");
-    fprintf(fPtr, "%d %s %s %d %d %d\n" game.cpu_pitcher.ID, game.cpu_pitcher.first, game.cpu_pitcher.last, game.cpu_pitcher.power, game.cpu_pitcher.contact, game.cpu_pitcher.pitching);
+    fprintf(fPtr, "%d %s %s %d %d %d\n" game.user_pitcher->ID, game.user_pitcher->first, game.user_pitcher->last, game.user_pitcher->power, game.user_pitcher->contact, game.user_pitcher->pitching);
 
     fclose(fPtr);
 
