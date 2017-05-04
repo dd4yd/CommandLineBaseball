@@ -83,6 +83,7 @@ Game startGame(Player *team1, Player *team2){
     game.balls = 0;
     game.outs = 0;
     game.strikes = 0;
+    game.inning = 0;
     
     game.team1 = team1;
     game.team2 = team2;
@@ -92,9 +93,37 @@ Game startGame(Player *team1, Player *team2){
 
 Game playGame(Game game){
     
-    
+    while(game.inning <= 18){
+        
+        while(game.outs != 3){
+            bat(&game);
+        }
+        
+        game.inning ++;
+    }
     
     return game;
 }
 
+void bat(Game *game){
+    
+    Player *team;
+    team = getTeam(game);
+    
+    while(game->balls < 4 && game->strikes < 3){
+        
+    }
+}
 
+Player* getTeam(Game *game){
+    
+    Player *team;
+    
+    if(game->inning % 2 == 0){
+        team = game->team2;
+    } else {
+        team = game->team1;
+    }
+    
+    return team;
+}
