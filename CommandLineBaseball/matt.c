@@ -76,8 +76,10 @@ void draftOptions(void){
 void printTeam(Player* team){
     
     Player* current = team;
+    Player* previous = NULL;
     
-    while(current != NULL){
+    while(previous->next != team){
+        previous = current;
         printf("%d. %s %s %d %d %d\n", current->ID, current->first, current->last, current->power, current->contact, current->pitching);
         current = current->next;
     }
