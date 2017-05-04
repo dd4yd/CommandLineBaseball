@@ -54,6 +54,7 @@ AtBat user_bat(Game *game);
 void advanceRunner(Game *game, AtBat hit);
 Player* getTeam(Game *game);
 Player* getHighestPitcher(Player *team);
+void nextInning(Game *game);
 
 //Matt's prototypes
 void draft(Player draftable[], Player hash[], int arrayLength);

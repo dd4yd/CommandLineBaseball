@@ -77,75 +77,87 @@ void printArray(Player a[], int arrayLength){
     }
 }
 
-Game startGame(Player *team1, Player *team2){
+Game* newGame(Player *team1, Player *team2){
     
-    Game game;
+    if(team1 == NULL || team2 == NULL){
+        printf("Team values are null.\nTerminating program...\n");
+        exit(-1);
+    }
     
-    game.balls = 0;
-    game.outs = 0;
-    game.strikes = 0;
-    game.inning = 0;
+    Game *game = malloc(sizeof(Game));
     
-    game.team1 = team1;
-    game.team2 = team2;
+    game->balls = 0;
+    game->outs = 0;
+    game->strikes = 0;
+    game->inning = 1;
     
-    game.cpu_pitcher = getHighestPitcher(team1);
-    game.user_pitcher = getHighestPitcher(team2);
+    game->team1 = team1;
+    game->team2 = team2;
+    game->next = NULL;
+    
+    game->cpu_pitcher = getHighestPitcher(team1);
+    game->user_pitcher = getHighestPitcher(team2);
     
     return game;
 }
 
-Game playGame(Game game){
+Game* playGame(Game *game){
     
-    while(game.inning <= 18){
+    AtBat at_bat;
+    
+    while(game->inning <= 9){
         
-        while(game.outs != 3){
-            user_bat(&game);
+        while(game->outs != 3){
+            
+            at_bat = user_bat(game);
             
             //advance runner if balls = 4
             
             //add an out if strikes = 3
             
-            //
+            //increment the batter
+            game->team1 = game->team1->next;
         }
         
-        game.inning ++;
+        game->inning ++;
     }
     
     return game;
 }
 
-void user_bat(Game *game){
+AtBat user_bat(Game *game){
     
     Player *player, *pitcher;
+    AtBat hit;
+    int guess, pitch;
     
-    player = getTeam(game);
-    pitcher = getHighestPitcher(game->team2);
-    
-    int guess, pitch, hit;
-    
-    while(game->balls != 4 && game->strikes != 3){
+    while(1){
         
+        //check for walk and strikeout
+        if(game->balls == 4) {
+            return WALK;
+        } else if(game->strikes == 3) {
+            return STRIKEOUT;
+        }
+        
+        //print at bat
+        printf("Pitcher: %s %s\nBatter: %s %s\n", game->cpu_pitcher->first, game->cpu_pitcher->first, game->team1->first, game->team1->last);
         printf("Outs: %d\nCount: %d-%d\n",game->outs, game->balls, game->strikes);
-        printf("Select a pitch 1-4: ");
-        scanf("%d", &guess);
+        printf("Select a pitch to hit (1-4): ");
         
+        //get guess and pitch
+        scanf("%d", &guess);
         pitch = (rand() % 5) + 1;
         
         if(pitch == 5){
-            
             game->balls++;
             printf("Ball %d!\n", game->balls);
-            
         } else if(guess == pitch){
-            
             hit = determineHit(*player, *pitcher);
-            
+            return hit;
         } else {
-            
             game->strikes++;
             printf("Strike %d!\n", game->strikes);
-            
         }
     }
 }
@@ -153,16 +165,12 @@ void user_bat(Game *game){
 Player* getHighestPitcher(Player *team){
     
     Player *max = team;
-    
     while(team->next != NULL){
-        
         if(team->pitching > max->pitching){
             max->pitching = team->pitching;
         }
-        
         team = team->next;
     }
-    
     return max;
 }
 
