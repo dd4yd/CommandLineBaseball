@@ -137,17 +137,20 @@ Game* playGame(Game *game){
             game->balls = 0;
             game->strikes = 0;
             
+            //print diamond
+            printDiamond(*game);
+            
             //increment the batter
             game->team1 = game->team1->next;
         }
         
-        /*sim cpu batting here
-         
-         
-         
-         
-        */
+        //sim cpu inning
+        simInning(*game);
         
+        //print scoreboard
+        printScoreboard(*game);
+        
+        //go to the next inning
         nextInning(game);
     }
     
@@ -233,3 +236,5 @@ Player* getTeam(Game *game){
     
     return team;
 }
+
+
