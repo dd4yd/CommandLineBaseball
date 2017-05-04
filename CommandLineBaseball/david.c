@@ -100,16 +100,16 @@ void printScoreboard(Game game){
     printf("|                           |\n");
     printf("|---COMMAND LINE BASEBALL---|\n");
     printf("|                           |\n");
+    printf("| Team 1:                   |\n");
     for(i = 0; i < 18; i+=2){ //TEAM 1 SCORE
         sum1 += game.scoreboard[i];
-        printf("| Team 1: %d ", game.scoreboard[i]);
+        printf("%d ", game.scoreboard[i]);
     }
-    printf("|\n");
+    printf("| Team 1:                   |\n");
     for(i = 1; i < 18; i+=2){
         sum1 += game.scoreboard[i];
-        printf("| Team 2: %d ", game.scoreboard[i]);
+        printf("%d ", game.scoreboard[i]);
     }
-    printf("|\n");
     printf("|                           |\n");
     printf("| Team 1 Total: %d           |\n", sum1);
     printf("| Team 2 Total: %d           |\n", sum2);
