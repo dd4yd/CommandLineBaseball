@@ -207,7 +207,11 @@ AtBat user_bat(Game *game){
 void nextInning(Game *game){
     
     game->inning++;
-    printf("We are moving to inning %d.\n", (game->inning + 1)/2);
+    
+    if((game->inning + 1)/2 < 10){
+       printf("We are moving to inning %d.\n", (game->inning + 1)/2); 
+    }
+    
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;

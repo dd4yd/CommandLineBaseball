@@ -51,5 +51,9 @@ int main(int argc, char * argv[]) {
     free(game);
     freeTeam(userTeam);
     freeTeam(computerTeam);
+    
+    printf("\n\nThanks for playing Command Line Baseball.\n");
+    printf("Authors: Matt Barber, David Dean, Noah Panicola\n\n");
+    
     return 0;
 }
