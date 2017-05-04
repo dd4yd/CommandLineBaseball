@@ -122,17 +122,6 @@ Player* pickPlayerComputer(Player draftable[]){
     return draftable;
 }
 
-void playGame(Game game){
-    
-    int inning = 0;
-    Player userPitcher = userPickPitcher();
-    Player computerPitcher = computerPickPitcher();
-    
-    while(inning < 17 && game.scoreboard[16] != game.scoreboard[17]){
-        
-    }
-    
-}
 
 
 
