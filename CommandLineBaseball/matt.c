@@ -121,7 +121,7 @@ void pickPlayerUser(Player draftable[], Player hash[], int arrayLength){
     scanf("%d", &id);
     
     while(id < 0 || id > arrayLength || draftable[id].drafted == 1){
-        printf("Invalid pick. Please choose a player 1 - %d that has not been drafted: ", arrayLength);
+        printf("Invalid pick. Please choose a player 0 - %d that has not been drafted: ", arrayLength);
         scanf("%d", &id);
     }
     
@@ -322,24 +322,24 @@ void simInning(Game game){
     int num = rand() % game.user_pitcher->pitching;
     
     if(num >= 3){
-        game.scoreboard[game.inning - 1] = 0;
+        game.scoreboard[game.inning] = 0;
         printf("%s pitched in inning %d.\nThe computer team had %d hits and 0 runs\n", game.user_pitcher->last, game.inning/2, rand() % 3);
         return;
     }
     if(num >= 2){
-        game.scoreboard[game.inning - 1] = 1;
+        game.scoreboard[game.inning] = 1;
         game.cpu_score += 1;
         printf("%s pitched in inning %d.\nThe computer team had %d hits and 1 run\n", game.user_pitcher->last, game.inning/2, rand() % 3 + 1);
         return;
     }
     if(num >= 1){
-        game.scoreboard[game.inning - 1] = 2;
+        game.scoreboard[game.inning] = 2;
         game.cpu_score += 2;
         printf("%s pitched in inning %d.\nThe computer team had %d hits and 2 runs\n", game.user_pitcher->last, game.inning/2, rand() % 4 + 1);
         return;
     }
     if(num >= 0){
-        game.scoreboard[game.inning - 1] = 3;
+        game.scoreboard[game.inning] = 3;
         game.cpu_score += 3;
         printf("%s pitched in inning %d.\nThe computer team had %d hits and 3 runs\n", game.user_pitcher->last, game.inning/2, rand() % 5 + 2);
         return;
