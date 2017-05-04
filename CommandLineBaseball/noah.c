@@ -151,7 +151,6 @@ AtBat user_bat(Game *game){
     
     printf("------------------------------------------\n");
     printf("Pitcher: %s %s\nBatter: %s %s\n", game->cpu_pitcher->first, game->cpu_pitcher->last, game->team1->first, game->team1->last);
-    printf("------------------------------------------\n");
     
     while(1){
         
@@ -164,6 +163,7 @@ AtBat user_bat(Game *game){
         
         //print at bat
         printf("Outs: %d\nCount: %d-%d\n",game->outs, game->balls, game->strikes);
+        printf("------------------------------------------\n");
         printf("Select a pitch to hit (1-4): ");
         
         //get guess and pitch
@@ -185,6 +185,9 @@ AtBat user_bat(Game *game){
 
 void nextInning(Game *game){
     game->inning++;
+    printf("------------------------------------------\n");
+    printf("3 outs! We are moving to inning %d.\n", game->inning);
+    printf("------------------------------------------\n");
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;
