@@ -185,7 +185,7 @@ void writeGameToFile(Game game){
     }
     fprintf(fPtr, "\nTeam 2:\n");
     for(i = 0; i < teamSize; i++){
-        printf(fPtr, "%d %s %s %d %d %d\n", game.team2[i].ID, game.team2[i].first, game.team2[i].last, game.team2[i].power, game.team2[i].contact, game.team2[i].pitching);
+        fprintf(fPtr, "%d %s %s %d %d %d\n", game.team2[i].ID, game.team2[i].first, game.team2[i].last, game.team2[i].power, game.team2[i].contact, game.team2[i].pitching);
     }
 
     fprintf(fPtr, "\nScoreboard:\n");
@@ -209,9 +209,9 @@ void writeGameToFile(Game game){
     }
 
     fprintf(fPtr, "\nCPU Pitcher:\n");
-    fprintf(fPtr, "%d %s %s %d %d %d\n" game.cpu_pitcher->ID, game.cpu_pitcher->first, game.cpu_pitcher->last, game.cpu_pitcher->power, game.cpu_pitcher->contact, game.cpu_pitcher->pitching);
+    fprintf(fPtr, "%d %s %s %d %d %d\n", game.cpu_pitcher->ID, game.cpu_pitcher->first, game.cpu_pitcher->last, game.cpu_pitcher->power, game.cpu_pitcher->contact, game.cpu_pitcher->pitching);
     fprintf(fPtr, "\nUser Pitcher:\n");
-    fprintf(fPtr, "%d %s %s %d %d %d\n" game.user_pitcher->ID, game.user_pitcher->first, game.user_pitcher->last, game.user_pitcher->power, game.user_pitcher->contact, game.user_pitcher->pitching);
+    fprintf(fPtr, "%d %s %s %d %d %d\n", game.user_pitcher->ID, game.user_pitcher->first, game.user_pitcher->last, game.user_pitcher->power, game.user_pitcher->contact, game.user_pitcher->pitching);
 
     fclose(fPtr);
 
