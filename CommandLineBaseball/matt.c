@@ -48,6 +48,7 @@ void draft(Player draftable[], int arrayLength){
                 break;
                 
             case 6:
+                
                 pickPlayerUser(draftable);
                 pickPlayerComputer(draftable, arrayLength);
                 picks++;
@@ -106,7 +107,7 @@ void pickPlayerComputer(Player draftable[], int arrayLength){
     int index = 0;
     
     for(i = 0; i < arrayLength; i++){
-        if(draftable[i].overall > max){
+        if(draftable[i].overall > max && draftable[i].drafted != 1){
             max = draftable[i].overall;
             index = i;
         }
