@@ -8,14 +8,14 @@
 
 #include "clb.h"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, char * argv[]) {
     
     //gets array length and sets global variable
-    int arrayLength = getLength("playerlist.txt");
+    int arrayLength = getLength(argv[1]);
     
     //populates the player list
     Player list[arrayLength];
-    populate("playerlist.txt", list, arrayLength);
+    populate(argv[1], list, arrayLength);
     
     //debug
     printArray(list, arrayLength);
