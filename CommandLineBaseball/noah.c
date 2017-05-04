@@ -57,10 +57,10 @@ int getLength(char *filename){
 
 void printArray(Player a[], int arrayLength){
     int i = 0;
-    printf("ID\tFirst\tLast\tPower\tContact\tPitching\n");
+    printf("ID First Last Power Contact Pitching\n");
     for(i=0; i < arrayLength; i++){
         if(a[i].drafted == 0){
-            printf("%d\t%s\t%s\t%d\t%d\t%d\t\n", a[i].ID, a[i].first, a[i].last, a[i].power, a[i].contact, a[i].pitching);
+            printf("%d %s %s %d %d %d\n", a[i].ID, a[i].first, a[i].last, a[i].power, a[i].contact, a[i].pitching);
         }
     }
 }
