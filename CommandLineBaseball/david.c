@@ -68,7 +68,7 @@ void downheap(Player list[], int n, int i, int field){
     }
 }
 
-void sortPlayerList(Player list[], int field){
+void sortPlayerList(Player list[], int field, int arrayLength){
     
     //field: 1->name, 2->contact, 3->power, 4->pitching
     int i;
