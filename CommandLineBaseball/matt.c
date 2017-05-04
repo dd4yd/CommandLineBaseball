@@ -66,7 +66,7 @@ void draft(Player draftable[], Player hash[], int arrayLength){
                 
             case 9:
                 sortPlayerList(draftable, 5, arrayLength);
-                pickPlayerUser(draftable, hash);
+                pickPlayerUser(draftable, hash, arrayLength);
                 pickPlayerComputer(draftable, hash, arrayLength);
                 picks++;
                 break;
