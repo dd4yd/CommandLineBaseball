@@ -202,7 +202,7 @@ Player* getHighestPitcher(Player *team){
     while(1){
         
         if(team->pitching > max->pitching){
-            max->pitching = team->pitching;
+            max = team;
         }
         
         team = team->next;
