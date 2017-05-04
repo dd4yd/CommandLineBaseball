@@ -32,11 +32,11 @@ void draft(Player draftable[], Player hash[], int arrayLength){
                 break;
                 
             case 2:
-                sortPlayerList(draftable, 2, arrayLength);
+                sortPlayerList(draftable, 3, arrayLength);
                 break;
                 
             case 3:
-                sortPlayerList(draftable, 3, arrayLength);
+                sortPlayerList(draftable, 2, arrayLength);
                 break;
                 
             case 4:
@@ -49,6 +49,7 @@ void draft(Player draftable[], Player hash[], int arrayLength){
             
             case 6:
                 searchPlayer(hash);
+                break;
                 
             case 7:
                 sortPlayerList(draftable, 5, arrayLength);
@@ -63,8 +64,8 @@ void draft(Player draftable[], Player hash[], int arrayLength){
 void draftOptions(void){
     
     printf("1) Sort by name\n");
-    printf("2) Sort by contact\n");
-    printf("3) Sort by power\n");
+    printf("2) Sort by power\n");
+    printf("3) Sort by contact\n");
     printf("4) Sort by pitching\n");
     printf("5) Show players\n");
     printf("6) Search for player\n");
@@ -77,7 +78,7 @@ void printTeam(Player* team){
     Player* current = team;
     
     while(current != NULL){
-        printf("%d. %s %s %d %d %d\n", current->ID, current->first, current->last, current->contact, current->power, current->pitching);
+        printf("%d. %s %s %d %d %d\n", current->ID, current->first, current->last, current->power, current->contact, current->pitching);
         current = current->next;
     }
 }
@@ -172,15 +173,30 @@ void searchPlayer(Player hash[]){
         printf("%s is not a draftable player\n", name);
     }
     else{
-        printf("%d. %s %s %d %d %d\n", hash[key].ID, hash[key].first, hash[key].last, hash[key].contact, hash[key].power,hash[key].pitching);
+        printf("%d. %s %s %d %d %d\n", hash[key].ID, hash[key].first, hash[key].last, hash[key].power, hash[key].contact,hash[key].pitching);
     }
 }
 
 Player* getUserTeam(void){
+    
+    Player* current = team1;
+    while(current->next != NULL){
+        current = current->next;
+    }
+    
+    current->next = team1;
     return team1;
 }
 
 Player* getComputerTeam(void){
+    
+    Player* current = team2;
+    
+    while(current->next != NULL){
+        current = current->next;
+    }
+    
+    current->next = team2;
     return team2;
 }
 
