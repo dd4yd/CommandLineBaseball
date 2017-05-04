@@ -44,6 +44,8 @@ void draftOptions(void);
 void printTeam(Player* team);
 Player* pickPlayerUser(Player draftable[]);
 Player* pickPlayerComputer(Player draftable[]);
+int searchPlayerHash(char* name, Player array[]);
+int getHashNumber(char* name, Player array[]);
 
 //David's prototypes
 Player* sortPlayerList(Player list[], int field);
