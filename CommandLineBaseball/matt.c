@@ -21,8 +21,8 @@ void draft(Player draftable[], Player hash[], int arrayLength){
         draftOptions();
         scanf("%d", &choice);
         
-        while(choice < 1 || choice > 7){
-            printf("Invalid choice. Options are 1 - 6\n");
+        while(choice < 1 || choice > 9){
+            printf("Invalid choice. Options are 1 - 9\n");
             printf("Select a valid option: ");
             scanf("%d", &choice);
         }
@@ -46,14 +46,25 @@ void draft(Player draftable[], Player hash[], int arrayLength){
                 break;
                 
             case 5:
+                printf("\n--- Draftable Players ---\n");
                 printArray(draftable, arrayLength);
                 break;
-            
+                
             case 6:
-                searchPlayer(hash);
+                printf("\n--- USER TEAM ---\n");
+                printTeam(team1);
                 break;
                 
             case 7:
+                printf("\n--- COMPUTER TEAM ---\n");
+                printTeam(team2);
+                break;
+            
+            case 8:
+                searchPlayer(hash);
+                break;
+                
+            case 9:
                 sortPlayerList(draftable, 5, arrayLength);
                 pickPlayerUser(draftable, hash);
                 pickPlayerComputer(draftable, hash, arrayLength);
@@ -68,14 +79,16 @@ void draft(Player draftable[], Player hash[], int arrayLength){
 
 void draftOptions(void){
     
-    printf("\n*** Draft Menu ****\n");
+    printf("\n--- Draft Menu ---\n");
     printf("1) Sort by name\n");
     printf("2) Sort by power\n");
     printf("3) Sort by contact\n");
     printf("4) Sort by pitching\n");
-    printf("5) Show players\n");
-    printf("6) Search for player\n");
-    printf("7) Draft a player\n");
+    printf("5) Show draftable players\n");
+    printf("6) Show user team\n");
+    printf("7) Show computer team\n");
+    printf("8) Search for player\n");
+    printf("9) Draft a player\n");
     printf("Select an option: ");
 }
 
@@ -113,6 +126,7 @@ void pickPlayerUser(Player draftable[], Player hash[]){
     
     picked->next = team1;
     team1 = picked;
+    endUser->next = team1;
     
     draftable[id].drafted = 1;
     hash[getHashNumber(draftable[id].last, hash)].drafted = 1;
@@ -139,9 +153,10 @@ void pickPlayerComputer(Player draftable[], Player hash[], int arrayLength){
         endComputer = picked;
     }
     
+
     picked->next = team2;
     team2 = picked;
-    
+    endComputer->next = team2;
     draftable[index].drafted = 1;
     hash[getHashNumber(draftable[index].last, hash)].drafted = 1;
 }
