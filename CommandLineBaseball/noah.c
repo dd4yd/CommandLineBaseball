@@ -90,6 +90,8 @@ Game* newGame(Player *team1, Player *team2){
     game->outs = 0;
     game->strikes = 0;
     game->inning = 1;
+    game->user_score = 0;
+    game->cpu_score = 0;
     
     game->team1 = team1;
     game->team2 = team2;
@@ -138,6 +140,14 @@ Game* playGame(Game *game){
             //increment the batter
             game->team1 = game->team1->next;
         }
+        
+        /*sim cpu batting here
+         
+         
+         
+         
+        */
+        
         nextInning(game);
     }
     
@@ -185,7 +195,6 @@ AtBat user_bat(Game *game){
 
 void nextInning(Game *game){
     game->inning++;
-    printf("------------------------------------------\n");
     printf("3 outs! We are moving to inning %d.\n", game->inning);
     printf("------------------------------------------\n");
     game->outs = 0;
