@@ -26,6 +26,8 @@ typedef struct game {
     int outs;
     int strikes;
     int balls;
+    int cpu_pitcher;
+    int user_pitcher;
     int bases[4];
     
 } Game;
