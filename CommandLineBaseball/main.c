@@ -32,4 +32,10 @@ int main(int argc, char * argv[]) {
     Player* computerTeam = getComputerTeam();
     printTeam(userTeam);
     printTeam(computerTeam);
+    
+    Game *game = NULL;
+    game = newGame(userTeam, computerTeam);
+    playGame(game);
+    free(game);
+    
 }
