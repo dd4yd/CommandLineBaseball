@@ -33,13 +33,15 @@ typedef struct player {
 typedef struct game {
     Player *team1;
     Player *team2;
+    Player *cpu_pitcher;
+    Player *user_pitcher;
+    int user_score;
+    int cpu_score;
     int inning;
     int scoreboard[18];
     int outs;
     int strikes;
     int balls;
-    Player *cpu_pitcher;
-    Player *user_pitcher;
     int bases[4];
     struct game *next;
 } Game;
