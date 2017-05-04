@@ -349,12 +349,13 @@ void simInning(Game *game){
 
 void freeTeam(Player* team){
     
-    Player* current = team;
+    Player* start = team->next;
     Player* previous = NULL;
+    team->next = NULL;
     
-    while(current != NULL){
-        previous = current;
-        current = current->next;
+    while(start != NULL){
+        previous = start;
+        start = start->next;
         free(previous);
     }
 }
