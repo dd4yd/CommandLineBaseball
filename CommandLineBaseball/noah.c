@@ -196,8 +196,10 @@ void nextInning(Game *game){
 
 Player* getHighestPitcher(Player *team){
     
+    Player *head = team;
     Player *max = team;
-    while(team->next != NULL){
+    
+    while(team->next != head){
         if(team->pitching > max->pitching){
             max->pitching = team->pitching;
         }
