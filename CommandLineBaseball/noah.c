@@ -151,7 +151,6 @@ Game* playGame(Game *game){
 
 AtBat user_bat(Game *game){
     
-    Player *player, *pitcher;
     AtBat hit;
     int guess, pitch;
     
@@ -178,7 +177,7 @@ AtBat user_bat(Game *game){
             game->balls++;
             printf("Ball %d!\n", game->balls);
         } else if(guess == pitch){
-            hit = determineHit(*player, *pitcher);
+            hit = determineHit(*(game->team1), *(game->cpu_pitcher));
             return hit;
         } else {
             game->strikes++;
