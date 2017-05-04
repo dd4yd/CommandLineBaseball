@@ -64,7 +64,7 @@ int getHashNumber(char* name, Player array[]);
 Player* getComputerTeam(void);
 Player* getUserTeam(void);
 void searchPlayer(Player hash[]);
-int determineHit(Player batter, Player pitcher);
+HitType determineHit(Player batter, Player pitcher);
 
 //David's prototypes
 void sortPlayerList(Player list[], int field, int arrayLength);
