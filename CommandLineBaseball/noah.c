@@ -122,22 +122,22 @@ Game* playGame(Game *game){
                 printf("%s %s hit a single!\n", game->team1->first, game->team1->last);
                 advanceRunner(game, 1);
             } else if (at_bat == DOUBLE){
-                printf("%s %s\n hit a double!\n", game->team1->first, game->team1->last);
+                printf("%s %s hit a double!\n", game->team1->first, game->team1->last);
                 advanceRunner(game, 2);
             } else if (at_bat == TRIPLE){
-                printf("%s %s\n hit a triple!\n", game->team1->first, game->team1->last);
+                printf("%s %s hit a triple!\n", game->team1->first, game->team1->last);
                 advanceRunner(game, 3);
             } else if (at_bat == HOMERUN){
-                printf("%s %s\n hit a homerun!\n", game->team1->first, game->team1->last);
+                printf("%s %s hit a homerun!\n", game->team1->first, game->team1->last);
                 advanceRunner(game, 4);
             } else if (at_bat == FLYOUT){
-                printf("%s %s\n flew out.\n", game->team1->first, game->team1->last);
+                printf("%s %s flew out.\n", game->team1->first, game->team1->last);
                 game->outs = game->outs + 1;
             } else if (at_bat == GROUNDOUT){
-                printf("%s %s\n grounded out.\n", game->team1->first, game->team1->last);
+                printf("%s %s grounded out.\n", game->team1->first, game->team1->last);
                 game->outs++;
             } else if (at_bat == STRIKEOUT){
-                printf("%s %s\n struck out.\n", game->team1->first, game->team1->last);
+                printf("%s %s struck out.\n", game->team1->first, game->team1->last);
                 game->outs++;
             }
             printf("------------------------------------------\n");
@@ -207,15 +207,16 @@ AtBat user_bat(Game *game){
 void nextInning(Game *game){
     
     game->inning++;
-    printf("3 outs! We are moving to inning %d.\n", (game->inning + 1)/2);
+    printf("We are moving to inning %d.\n", (game->inning + 1)/2);
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;
     
-    int i = 0;
+    //Debug
+    /*int i = 0;
     for(i=0; i < 4; i++){
         game->bases[i] = 0;
-    }
+    }*/
     
 }
 
