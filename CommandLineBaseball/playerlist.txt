@@ -38,3 +38,5 @@ Benny “TheJet” 9 9 4
 Scotty Smalls 1 1 1
 “Ham” Porter 1 8 2
 Babe Ruth 10 10 1
+Jon Patman 9 8 9
+Meng Zhang 8 9 8
