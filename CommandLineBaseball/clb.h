@@ -29,21 +29,17 @@ typedef struct game {
     
 } Game;
 
-//global variables
-Player *team1, *team2;
-int arrayLength;
-
 //noah's prototypes
-void populate(char *filename, Player list[]);
+void populate(char *filename, Player list[], int arrayLength);
 int getLength(char *filename);
-void printArray(Player a[]);
+void printArray(Player a[], int arrayLength);
 
 //Matt's prototypes
 void draft(Player draftable[]);
 void draftOptions(void);
 void printTeam(Player* team);
 void pickPlayerUser(Player draftable[]);
-void pickPlayerComputer(Player draftable[]);
+void pickPlayerComputer(Player draftable[], int arrayLength);
 int searchPlayerHash(char* name, Player array[]);
 int getHashNumber(char* name, Player array[]);
 

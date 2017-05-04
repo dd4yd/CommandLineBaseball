@@ -11,13 +11,13 @@
 int main(int argc, const char * argv[]) {
     
     //gets array length and sets global variable
-    arrayLength = getLength("playerlist.txt");
+    int arrayLength = getLength("playerlist.txt");
     
     //populates the player list
     Player list[arrayLength];
-    populate("playerlist.txt", list);
+    populate("playerlist.txt", list, arrayLength);
     
     //debug
-    printArray(list);
+    printArray(list, arrayLength);
     
 }
