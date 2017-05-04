@@ -207,7 +207,7 @@ AtBat user_bat(Game *game){
 void nextInning(Game *game){
     
     game->inning++;
-    printf("3 outs! We are moving to inning %d.\n", game->inning/2);
+    printf("3 outs! We are moving to inning %d.\n", (game->inning + 1)/2);
     game->outs = 0;
     game->balls = 0;
     game->strikes = 0;
@@ -255,8 +255,8 @@ void advanceRunner(Game *game, int hit){
     
     int i = 0;
     
-    if(game->bases[0] == 0 && hit == 1){
-        game->bases[0] = 1;
+    if(game->bases[1] == 0 && hit == 1){
+        game->bases[1] = 1;
         return;
     }
     
