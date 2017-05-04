@@ -38,8 +38,8 @@ int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 Game startGame(Player *team1, Player *team2);
 Game playGame(Game game);
-void user_bat(Game *game);
-void advanceRunner(Game *game);
+int user_bat(Game *game);
+int advanceRunner(Game *game);
 Player* getTeam(Game *game);
 Player *getHighestPitcher(Player *team);
 
