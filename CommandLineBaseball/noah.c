@@ -240,4 +240,6 @@ Player* getTeam(Game *game){
     return team;
 }
 
-
+void advanceRunner(Game *game, int hit){
+    
+}

@@ -53,7 +53,7 @@ void printArray(Player a[], int arrayLength);
 Game* newGame(Player *team1, Player *team2);
 Game* playGame(Game *game);
 AtBat user_bat(Game *game);
-void advanceRunner(Game *game, AtBat hit);
+void advanceRunner(Game *game, int hit);
 Player* getTeam(Game *game);
 Player* getHighestPitcher(Player *team);
 void nextInning(Game *game);
