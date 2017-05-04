@@ -7,8 +7,10 @@
 //
 
 #include "clb.h"
+Player* team1 = NULL;
+Player* team2 = NULL;
 
-void draft(Player draftable[]){
+void draft(Player draftable[], int arrayLength){
     
     int choice;
     int picks = 0;
@@ -26,28 +28,28 @@ void draft(Player draftable[]){
         switch(choice){
                 
             case 1:
-                sortPlayerList(draftable, 1);
+                sortPlayerList(draftable, 1, arrayLength);
                 break;
                 
             case 2:
-                sortPlayerList(draftable, 2);
+                sortPlayerList(draftable, 2, arrayLength);
                 break;
                 
             case 3:
-                sortPlayerList(draftable, 3);
+                sortPlayerList(draftable, 3, arrayLength);
                 break;
                 
             case 4:
-                sortPlayerList(draftable, 4);
+                sortPlayerList(draftable, 4, arrayLength);
                 break;
                 
             case 5:
-                printArray(draftable);
+                printArray(draftable, arrayLength);
                 break;
                 
             case 6:
                 pickPlayerUser(draftable);
-                pickPlayerComputer(draftable);
+                pickPlayerComputer(draftable, arrayLength);
                 picks++;
                 break;
         }
@@ -97,7 +99,7 @@ void pickPlayerUser(Player draftable[]){
     draftable[id].drafted = 1;
 }
 
-void pickPlayerComputer(Player draftable[]){
+void pickPlayerComputer(Player draftable[], int arrayLength){
     
     int i;
     int max = -1;
@@ -151,6 +153,14 @@ int searchPlayerHash(char* name, Player array[]){
     else{
         return key;
     }
+}
+
+Player* getUserTeam(void){
+    return team1;
+}
+
+Player* getComputerTeam(void){
+    return team2;
 }
 
 
