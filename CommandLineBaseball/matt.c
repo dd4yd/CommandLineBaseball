@@ -8,7 +8,7 @@
 
 #include "clb.h"
 
-Player* draft(Player draftable[]){
+void draft(Player draftable[]){
     
     int choice;
     int picks = 0;
@@ -26,19 +26,19 @@ Player* draft(Player draftable[]){
         switch(choice){
                 
             case 1:
-                draftable = sortPlayerList(draftable, 1);
+                sortPlayerList(draftable, 1);
                 break;
                 
             case 2:
-                draftable = sortPlayerList(draftable, 2);
+                sortPlayerList(draftable, 2);
                 break;
                 
             case 3:
-                draftable = sortPlayerList(draftable, 3);
+                sortPlayerList(draftable, 3);
                 break;
                 
             case 4:
-                draftable = sortPlayerList(draftable, 4);
+                sortPlayerList(draftable, 4);
                 break;
                 
             case 5:
@@ -46,13 +46,12 @@ Player* draft(Player draftable[]){
                 break;
                 
             case 6:
-                draftable = pickPlayerUser(draftable);
-                draftable = pickPlayerComputer(draftable);
+                pickPlayerUser(draftable);
+                pickPlayerComputer(draftable);
                 picks++;
                 break;
         }
     }
-    return draftable;
 }
 
 void draftOptions(void){
@@ -77,7 +76,7 @@ void printTeam(Player* team){
     }
 }
 
-Player* pickPlayerUser(Player draftable[]){
+void pickPlayerUser(Player draftable[]){
     
     int id;
     printf("Enter the ID of the player you would like to draft: ");
@@ -96,10 +95,9 @@ Player* pickPlayerUser(Player draftable[]){
     team1 = picked;
     
     draftable[id].drafted = 1;
-    return draftable;
 }
 
-Player* pickPlayerComputer(Player draftable[]){
+void pickPlayerComputer(Player draftable[]){
     
     int i;
     int max = -1;
@@ -120,7 +118,6 @@ Player* pickPlayerComputer(Player draftable[]){
     team2 = picked;
     
     draftable[index].drafted = 1;
-    return draftable;
 }
 
 int getHashNumber(char* name, Player array[]){
