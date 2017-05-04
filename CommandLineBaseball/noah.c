@@ -110,8 +110,12 @@ void bat(Game *game){
     Player *team;
     team = getTeam(game);
     
-    while(game->balls < 4 && game->strikes < 3){
-        
+    int batter, pitcher;
+    pitcher = (rand() % 4) + 1;
+    
+    while(game->balls != 4 && game->strikes != 3){
+        printf("Select a pitch 1-4: ");
+        scanf("%d", &batter);
     }
 }
 

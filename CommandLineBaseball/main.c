@@ -10,6 +10,9 @@
 
 int main(int argc, char * argv[]) {
     
+    time_t t;
+    srand((unsigned) time(&t));
+    
     //gets array length and sets global variable
     int arrayLength = getLength(argv[1]);
     
