@@ -129,10 +129,7 @@ void printDiamond(Game game){
     else third = 'O';
     home = 'O';
 
-    printf("   --------------------\n");
-    printf("   |Balls Strikes Outs|\n");
-    printf("   | %d      %d     %d   |\n", game.balls, game.strikes, game.outs);
-    printf("   --------------------\n\n");
+    printf("==============================\n");
     printf("              %c              \n", second);
     printf("             / \\             \n");
     printf("            /   \\            \n");
@@ -162,7 +159,15 @@ void printDiamond(Game game){
     printf("            \\    /           \n");
     printf("             \\  /            \n");
     printf("              %c              \n", home);
+    printf("==============================\n");
 
+}
+
+void printCount(Game game){
+    printf("  --------------------  ");
+    printf("  |Balls Strikes Outs|  \n");
+    printf("  |  %d      %d      %d  |\n", game.balls, game.strikes, game.outs);
+    printf("  --------------------  \n");
 }
 
 void writeGameToFile(Game game){
