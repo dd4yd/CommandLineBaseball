@@ -25,30 +25,37 @@ int maxIndex(Player list[], int n, int i, int j, int k, int field){
             }
             break;
         case 2: //contact
-            if(j < n && list[j].contact > list[max].contact){
+            if(j < n && list[j].contact < list[max].contact){
                 max = j;
             }
-            if(k < n && list[k].contact > list[max].contact){
+            if(k < n && list[k].contact < list[max].contact){
                 max = k;
             }
             break;
         case 3: //power
-            if(j < n && list[j].power > list[max].power){
+            if(j < n && list[j].power < list[max].power){
                 max = j;
             }
-            if(k < n && list[k].power > list[max].power){
+            if(k < n && list[k].power < list[max].power){
                 max = k;
             }
             break;
         case 4: //pitching
-            if(j < n && list[j].pitching > list[max].pitching){
+            if(j < n && list[j].pitching < list[max].pitching){
                 max = j;
             }
-            if(k < n && list[k].pitching > list[max].pitching){
+            if(k < n && list[k].pitching < list[max].pitching){
                 max = k;
             }
             break;
-
+        case 5: //ID
+            if(j < n && list[j].ID < list[max].ID){
+                max = j;
+            }
+            if(k < n && list[k].ID < list[max].ID){
+                max = k;
+            }
+            break;
         default:
             max = i;
             break;
@@ -79,6 +86,7 @@ void sortPlayerList(Player list[], int field, int arrayLength){
         Player player = list[arrayLength-1-i];
         list[arrayLength-i-1] = list[0];
         list[0] = player;
+        downheap(list, arrayLength-i-1, 0, field);
     }
 }
 
