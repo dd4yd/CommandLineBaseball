@@ -112,33 +112,28 @@ Game* playGame(Game *game){
             //user bats
             at_bat = user_bat(game);
             
-            //advance runner if balls = 4
             if(at_bat == WALK || at_bat == SINGLE){
                 printf("Single or Walk\n");
-                game->balls = 0;
-                game->strikes = 0;
             } else if (at_bat == DOUBLE){
                 printf("Double\n");
-                game->balls = 0;
-                game->strikes = 0;
             } else if (at_bat == TRIPLE){
                 printf("Triple\n");
-                game->balls = 0;
-                game->strikes = 0;
             } else if (at_bat == HOMERUN){
                 printf("Homerun\n");
-                game->balls = 0;
-                game->strikes = 0;
             } else if (at_bat == FLYOUT){
                 printf("Flyout\n");
-                game->outs++;
-            }else if (at_bat == GROUNDOUT){
+                game->outs = game->outs + 1;
+            } else if (at_bat == GROUNDOUT){
                 printf("Groundout\n");
                 game->outs++;
             } else if (at_bat == STRIKEOUT){
                 printf("Strikeout\n");
                 game->outs++;
             }
+            
+            //reset count
+            game->balls = 0;
+            game->strikes = 0;
             
             //increment the batter
             game->team1 = game->team1->next;
@@ -154,7 +149,9 @@ AtBat user_bat(Game *game){
     AtBat hit;
     int guess, pitch;
     
+    printf("------------------------------------------\n");
     printf("Pitcher: %s %s\nBatter: %s %s\n", game->cpu_pitcher->first, game->cpu_pitcher->last, game->team1->first, game->team1->last);
+    printf("------------------------------------------\n");
     
     while(1){
         
