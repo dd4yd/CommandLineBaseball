@@ -35,7 +35,7 @@ int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 
 //Matt's prototypes
-void draft(Player draftable[]);
+void draft(Player draftable[], int arrayLength);
 void draftOptions(void);
 void printTeam(Player* team);
 void pickPlayerUser(Player draftable[]);
@@ -44,6 +44,6 @@ int searchPlayerHash(char* name, Player array[]);
 int getHashNumber(char* name, Player array[]);
 
 //David's prototypes
-void sortPlayerList(Player list[], int field);
+void sortPlayerList(Player list[], int field, int arrayLength);
 void downheap(Player list[], int n, int i, int field);
 int maxIndex(Player list[], int n, int i, int j, int k, int field);
