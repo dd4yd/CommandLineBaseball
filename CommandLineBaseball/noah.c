@@ -29,7 +29,8 @@ void populate(char *filename, Player list[], Player arrayHash[], int arrayLength
         strcpy(arrayHash[key].first, list[i].first);
         strcpy(arrayHash[key].last, list[i].last);
         arrayHash[key].power = list[i].power;
-        arrayHash[key].contact = list[i].pitching;
+        arrayHash[key].pitching = list[i].pitching;
+        arrayHash[key].contact = list[i].contact;
         arrayHash[key].drafted = 0;
         arrayHash[key].ID = i;
         arrayHash[key].next = NULL;
@@ -100,6 +101,12 @@ Game playGame(Game game){
         
         while(game.outs != 3){
             user_bat(&game);
+            
+            //advance runner if balls = 4
+            
+            //add an out if strikes = 3
+            
+            //
         }
         
         game.inning ++;
