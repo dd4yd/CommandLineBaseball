@@ -54,8 +54,11 @@ int getHashNumber(char* name, Player array[]);
 Player* getComputerTeam(void);
 Player* getUserTeam(void);
 void searchPlayer(Player hash[]);
+int determineHit(Player batter, Player pitcher);
 
 //David's prototypes
 void sortPlayerList(Player list[], int field, int arrayLength);
 void downheap(Player list[], int n, int i, int field);
 int maxIndex(Player list[], int n, int i, int j, int k, int field);
+void printScoreboard(Game game);
+void printDiamond(Game game);
