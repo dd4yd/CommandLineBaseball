@@ -110,7 +110,7 @@ void printScoreboard(Game game){
         sum1 += game.scoreboard[i];
         printf("%d ", game.scoreboard[i]);
     }
-    printf("|                           |\n");
+    printf("\n|                           |\n");
     printf("| Team 1 Total: %d           |\n", sum1);
     printf("| Team 2 Total: %d           |\n", sum2);
     printf("-----------------------------\n");
