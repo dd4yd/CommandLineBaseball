@@ -15,9 +15,15 @@ int main(int argc, char * argv[]) {
     
     //populates the player list
     Player list[arrayLength];
-    populate(argv[1], list, arrayLength);
+    Player hash[100];
+    
+    populate(argv[1], list, hash, arrayLength);
     
     //debug
+    printArray(list, arrayLength);
+    
+    printf("\n--------------------------------------------\n");
+    sortPlayerList(list, 4, arrayLength);
     printArray(list, arrayLength);
     
 }
