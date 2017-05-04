@@ -10,7 +10,6 @@ typedef struct player {
     int ID;
     char first[50];
     char last[50];
-    int inning;
     int power;
     int contact;
     int pitching;
@@ -22,6 +21,7 @@ typedef struct player {
 typedef struct game {
     Player *team1;
     Player *team2;
+    int inning;
     int scoreboard[18];
     int outs;
     int strikes;
