@@ -36,6 +36,8 @@ int getLength(char *filename);
 void printArray(Player a[], int arrayLength);
 Game startGame(Player *team1, Player *team2);
 Game playGame(Game game);
+void bat(Game *game);
+void advanceRunner(Game *game);
 
 //Matt's prototypes
 void draft(Player draftable[], Player hash[], int arrayLength);
