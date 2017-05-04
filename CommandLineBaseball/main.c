@@ -26,7 +26,7 @@ int main(int argc, char * argv[]) {
     sortPlayerList(list, 4, arrayLength);
     printArray(list, arrayLength);
     
-    draft(list, arrayLength, hash);
+    draft(list, hash, arrayLength);
     Player* userTeam = getUserTeam();
     Player* computerTeam = getComputerTeam();
     printTeam(userTeam);
