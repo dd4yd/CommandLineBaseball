@@ -166,7 +166,7 @@ void printDiamond(Game game){
 void printCount(Game game){
     printf("  --------------------  ");
     printf("  |Balls Strikes Outs|  \n");
-    printf("  |  %d      %d      %d  |\n", game.balls, game.strikes, game.outs);
+    printf("  |  %d      %d     %d  |\n", game.balls, game.strikes, game.outs);
     printf("  --------------------  \n");
 }
 
